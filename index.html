@@ -3,75 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>西區網球場控制台</title>
+    <title>澳洲墨爾本自由行行程表</title>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #eef2f3; }
-        .card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 350px; }
-        h2 { text-align: center; color: #1a73e8; margin-bottom: 20px; }
-        label { display: block; margin-top: 15px; font-weight: bold; color: #555; }
-        select, input { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
-        button { width: 100%; padding: 15px; background: #1a73e8; color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; margin-top: 25px; cursor: pointer; }
-        button:hover { background: #1557b0; }
-        .footer { font-size: 12px; color: #999; text-align: center; margin-top: 15px; }
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --border-radius: 12px;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang TC', '微軟正黑體', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Header & Hero Section */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+        }
+        header p {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Sticky Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+            padding: 10px;
+            gap: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background-color: var(--bg-color);
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* Main Container */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Daily Cards */
+        .day-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            padding: 25px;
+            border-top: 5px solid var(--secondary-color);
+            scroll-margin-top: 70px;
+        }
+        .day-card h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        /* Timeline / List Styles */
+        ul.timeline {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        ul.timeline li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        ul.timeline li::before {
+            content: "•";
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+        .time {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-right: 10px;
+            display: inline-block;
+            min-width: 50px;
+        }
+        
+        /* Highlight Blocks */
+        .accommodation {
+            background-color: #e8f4fd;
+            border-left: 4px solid var(--secondary-color);
+            padding: 12px 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+        .suggestion {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 12px 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+        .food {
+            color: #d35400;
+            font-weight: bold;
+        }
+
+        /* Footer Notes */
+        .notes {
+            background-color: #f1f2f6;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-top: 40px;
+            color: var(--text-muted);
+        }
+        .notes h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            nav { justify-content: flex-start; }
+            .day-card { padding: 15px; }
+        }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h2>網球場快速預約</h2>
-    
-    <label>1. 選擇日期</label>
-    <input type="date" id="dateInput">
+    <header>
+        <h1>🇦🇺 墨爾本自由行行程表</h1>
+        <p>8/29 - 9/5 ｜ 澳洲放鬆之旅</p>
+    </header>
 
-    <label>2. 選擇球場</label>
-    <select id="staffInput">
-        <option value="78910">2 號球場</option>
-        <option value="78911" selected>3 號球場</option>
-        <option value="78912">4 號球場</option>
-    </select>
+    <nav>
+        <a href="#day1">8/29 (六)</a>
+        <a href="#day2">8/30 (日)</a>
+        <a href="#day3">8/31 (一)</a>
+        <a href="#day4">9/1 (二)</a>
+        <a href="#day5">9/2 (三)</a>
+        <a href="#day6">9/3 (四)</a>
+        <a href="#day7">9/4 (五)</a>
+        <a href="#day8">9/5 (六)</a>
+    </nav>
 
-    <label>3. 選擇時間</label>
-    <select id="timeInput"></select>
+    <main>
+        <!-- 8/29 -->
+        <section id="day1" class="day-card">
+            <h2>📅 8/29 (六) 出發</h2>
+            <ul class="timeline">
+                <li><span class="time">19:00</span>湛高峰出門搭計程車</li>
+                <li><span class="time">19:25</span>高鐵往桃園</li>
+                <li><span class="time">20:02</span>機捷往第二航廈</li>
+                <li><span class="time">20:18</span>抵達第二航廈</li>
+                <li><span class="time">23:30</span>起飛 ✈️</li>
+            </ul>
+        </section>
 
-    <button onclick="launch()">前往預約頁面</button>
-    <div class="footer">搭配油猴腳本即可自動選取</div>
-</div>
+        <!-- 8/30 -->
+        <section id="day2" class="day-card">
+            <h2>📅 8/30 (日) 抵達墨爾本與市區採買</h2>
+            <ul class="timeline">
+                <li><span class="time">10:40</span>抵達墨爾本機場 🛬</li>
+                <li>搭巴士到市區再轉</li>
+                <li><span class="time">13:00</span>約13:00到飯店放行李</li>
+                <li>南墨爾本市場 (Claypots Evening Star餐廳)</li>
+                <li>找一間咖啡廳</li>
+                <li>去 DFO South Wharf Outlet 買 UGG 鞋子</li>
+                <li>晚餐前先去超市買 Road trip 的食物</li>
+                <li>去 Check in</li>
+                <li><span class="food">晚餐：</span>亞拉河畔</li>
+            </ul>
+            <div class="accommodation">
+                <strong>🏨 住宿：Oakwood Premier Melbourne</strong><br>
+                📍 地址: 202 Normanby Road, 南岸, 3006 墨爾本, 澳洲
+            </div>
+        </section>
 
-<script>
-    const dIn = document.getElementById('dateInput');
-    const tIn = document.getElementById('timeInput');
-    const now = new Date();
-    
-    // 設定預設日期
-    dIn.value = now.toISOString().split('T')[0];
-    dIn.min = dIn.value;
+        <!-- 8/31 -->
+        <section id="day3" class="day-card">
+            <h2>📅 8/31 (一) 大洋路自駕上集</h2>
+            <ul class="timeline">
+                <li><span class="time">07:30</span>出發 🚗</li>
+                <li><span class="time">08:00</span>租車</li>
+                <li><span class="time">08:30</span>開車</li>
+                <li>看有沒有要停留 Sunnymead Cliff lookout 2 休息</li>
+                <li><span class="time">10:30</span>到 Memorial Arch 紀念拱門</li>
+                <li>去 Foodworks 超市</li>
+                <li><span class="food">午餐：</span>去 Lorne 吃炸魚薯條或越南河粉和逛一下紀念品店</li>
+                <li>車程 1.5 小時到燈塔 (沿路樹上可能都有)</li>
+                <li>去 Cape Otway Lightstation 尋找無尾熊 🐨</li>
+                <li>結束後去 Fauna Australia Wildlife Retreat 看袋熊</li>
+                <li>開回飯店 50 分鐘</li>
+                <li><span class="time">17:30</span>天黑，要注意時間</li>
+                <li>之後去飯店 CHECK IN</li>
+            </ul>
+            <div class="accommodation">
+                <strong>🏨 住宿：The International Motel Apollo Bay</strong><br>
+                📍 地址: 37 Great Ocean Road, 3233 阿波羅灣, 澳洲
+            </div>
+        </section>
 
-    function buildTime() {
-        tIn.innerHTML = '';
-        for(let h=8; h<=21; h++) {
-            const val = h.toString().padStart(2, '0') + "00";
-            const opt = document.createElement('option');
-            opt.value = val;
-            opt.textContent = `${h}:00 ${h >= 17 ? '(夜間)' : ''}`;
-            tIn.appendChild(opt);
-        }
-    }
-    buildTime();
+        <!-- 9/1 -->
+        <section id="day4" class="day-card">
+            <h2>📅 9/1 (二) 大洋路自駕下集與市區</h2>
+            <ul class="timeline">
+                <li><span class="time">07:30</span>出發 (早餐可以前一天先準備好)</li>
+                <li><span class="time">08:50</span>Gibson Steps</li>
+                <li>十二門徒</li>
+                <li>阿德湖峽</li>
+                <li><span class="food">午餐：</span>坎貝爾港 (12:00要吃完)</li>
+                <li>London Bridge (20分鐘)</li>
+                <li>The Grotto (20分鐘)</li>
+                <li><span class="time">12:30</span>離開</li>
+                <li><span class="time">15:30</span>到 Build-A-Bear Workshop 去買比比和憨比衣服 🧸</li>
+                <li><span class="time">16:30</span>離開去還車</li>
+                <li><span class="time">17:00</span>還車</li>
+                <li>去飯店 Check in</li>
+                <li><span class="time">19:00</span><span class="food">晚餐：</span>Max on Hardware - 袋鼠肉 🦘</li>
+            </ul>
+            <div class="accommodation">
+                <strong>🏨 住宿：Airbnb</strong><br>
+                📍 地址: Queen Street 370, 3000 墨爾本, 澳洲
+            </div>
+        </section>
 
-    function launch() {
-        const date = dIn.value;
-        const staff = document.getElementById('staffInput').value;
-        const time = tIn.value;
-        const h = parseInt(time.substring(0,2));
+        <!-- 9/2 -->
+        <section id="day5" class="day-card">
+            <h2>📅 9/2 (三) 經典一日遊</h2>
+            <ul class="timeline">
+                <li><strong>行程：</strong>kkday一日遊 (蒸汽火車、企鵝島 🐧)</li>
+            </ul>
+            <div class="accommodation">
+                <strong>🏨 住宿：Airbnb</strong><br>
+                📍 地址: Queen Street 370, 3000 墨爾本, 澳洲
+            </div>
+        </section>
 
-        // 判斷日夜網址
-        const baseUrl = h >= 17 
-            ? "https://tinybot.cc/dreams/product/%E8%A5%BF%E5%8D%80%E7%B6%B2%E7%90%83%E6%96%B9%E6%A1%886-%E5%A4%9C%E9%96%93%E7%87%88%E5%85%89%E8%B2%BB/"
-            : "https://tinybot.cc/dreams/product/%E8%A5%BF%E5%8D%80%E7%B6%B2%E7%90%83%E6%96%B9%E6%A1%886/";
+        <!-- 9/3 -->
+        <section id="day6" class="day-card">
+            <h2>📅 9/3 (四) 網球與市區漫步</h2>
+            <ul class="timeline">
+                <li><strong>行程：</strong>打網球 🎾、維多利亞市場、市區、維多利亞圖書館、聖派屈克主教座堂、庫克小屋、費蓮達火車站、聯邦廣場、聖保羅大教堂、咖啡街 Degraves St、逛超市買伴手禮</li>
+                <li><span class="food">早餐：</span>去買 Monforte Viennoiserie 可頌 (7:30開) 🥐</li>
+                <li><span class="food">午餐：</span>越南河粉 🍜</li>
+                <li><span class="time">19:30</span><span class="food">晚餐：</span>ARU (已訂位 - gmail) 🍽️</li>
+            </ul>
+            <div class="suggestion">
+                <strong>💡 路線順序建議：</strong><br>
+                早上網球+買可頌 ➔ 走去旁邊的「維多利亞市場」 ➔ 往南走到「維多利亞圖書館」 ➔ 午餐 ➔ 往東去「聖派屈克主教座堂+庫克小屋」 ➔ 傍晚往市區南側一次逛完「車站/廣場/大教堂/咖啡街」 ➔ 逛超市 ➔ 晚餐 ARU
+            </div>
+            <div class="accommodation">
+                <strong>🏨 住宿：Airbnb</strong><br>
+                📍 地址: Queen Street 370, 3000 墨爾本, 澳洲
+            </div>
+        </section>
 
-        window.location.href = `${baseUrl}?date=${date}&staff=${staff}&time=${time}`;
-    }
-</script>
+        <!-- 9/4 -->
+        <section id="day7" class="day-card">
+            <h2>📅 9/4 (五) 最後市區巡禮與返程</h2>
+            <ul class="timeline">
+                <li><span class="time">10:00</span>退房，前往附近 O2 Shop 寄放行李 (費用：小件 $8/天、大件 $12/天) 🧳</li>
+                <li><strong>行程：</strong>皇家展拱廊、布洛克拱廊 (就在皇家展拱廊旁邊)、市區、墨爾本舊監獄</li>
+                <li><span class="food">早餐：</span></li>
+                <li><span class="food">午餐：</span></li>
+                <li><span class="food">晚餐：</span>看要早點吃還是去機場貴賓室</li>
+                <li><span class="time">18:50</span>到達機場</li>
+                <li><span class="time">21:50</span>起飛 ✈️</li>
+            </ul>
+            <div class="suggestion">
+                <strong>💡 路線順序建議：</strong><br>
+                退房寄放行李後 ➔ 前往市區中心的「皇家/布洛克雙拱廊」吃早餐逛街 ➔ 下午慢慢往北走去「墨爾本舊監獄」 ➔ 傍晚回 O2 Shop 拿行李去機場。
+            </div>
+        </section>
+
+        <!-- 9/5 -->
+        <section id="day8" class="day-card">
+            <h2>📅 9/5 (六) 抵達台灣</h2>
+            <ul class="timeline">
+                <li><span class="time">05:15</span>抵達桃機 🏡</li>
+            </ul>
+        </section>
+
+        <!-- Notes -->
+        <div class="notes">
+            <h3>📝 備註</h3>
+            <ul style="margin: 0; padding-left: 20px;">
+                <li>蒸汽火車建議確認行駛日期。</li>
+                <li>咖啡/餐廳參考：排咖咖啡廳、亞拉河畔餐廳。</li>
+                <li>其他景點備選：維多利亞女王市場、維多利亞州立圖書館、美術館、皇家展廊。</li>
+            </ul>
+        </div>
+    </main>
 
 </body>
 </html>
