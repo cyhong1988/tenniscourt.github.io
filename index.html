@@ -16,6 +16,10 @@
             --border-radius: 12px;
         }
 
+        html {
+            scroll-behavior: smooth; /* 平滑滾動 */
+        }
+
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             margin: 0;
@@ -23,7 +27,6 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            scroll-behavior: smooth;
         }
 
         header {
@@ -153,9 +156,34 @@
             height: 14px;
             margin-right: 5px;
         }
+
+        /* 回到頂部按鈕 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .back-to-top:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
     </style>
 </head>
-<body>
+<body id="top">
 
     <header>
         <h1>🇦🇺 墨爾本自由行行程表</h1>
@@ -194,15 +222,15 @@
                 <li><span class="time">10:40</span>抵達墨爾本機場 <a href="https://maps.google.com/?q=Melbourne+Airport" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li>搭巴士到市區再轉</li>
                 <li><span class="time">13:00</span>約到飯店放行李</li>
-                <li>南墨爾本市場 (Claypots Evening Star餐廳) <a href="https://www.google.com/maps/place/?q=place_id:ChIJCbtOTPln1moRAiPmPzZklOY" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>南墨爾本市場 (Claypots Evening Star餐廳) <a href="https://maps.google.com/?q=Claypots+Evening+Star+South+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li>找一間咖啡廳</li>
-                <li>去 DFO South Wharf Outlet 買 UGG 鞋子 <a href="https://www.google.com/maps/place/?q=place_id:ChIJK7W61XJp1moRv4e_o0aFm2E" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>去 DFO South Wharf Outlet 買 UGG 鞋子 <a href="https://maps.google.com/?q=DFO+South+Wharf+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li>晚餐前先去超市買 Road trip 的食物</li>
                 <li>去飯店 Check in</li>
                 <li>晚餐：亞拉河畔</li>
             </ul>
             <div class="accommodation">
-                <strong>🏨 住宿：Oakwood Premier Melbourne</strong> <a href="https://www.google.com/maps/place/?q=place_id:ChIJG3b4RH9n1moRm04vZHboVVw" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a><br>
+                <strong>🏨 住宿：Oakwood Premier Melbourne</strong> <a href="https://maps.google.com/?q=Oakwood+Premier+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a><br>
                 📍 202 Normanby Road, 南岸, 3006 墨爾本, 澳洲
             </div>
         </section>
@@ -225,7 +253,7 @@
                 <li>吃冰淇淋和晚餐</li>
             </ul>
             <div class="accommodation">
-                <strong>🏨 住宿：The International Motel Apollo Bay</strong> <a href="https://www.google.com/maps/place/?q=place_id:ChIJvRUrN8I202oR5goOicc1n5A" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a><br>
+                <strong>🏨 住宿：The International Motel Apollo Bay</strong> <a href="https://maps.google.com/?q=The+International+Motel+Apollo+Bay" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a><br>
                 📍 37 Great Ocean Road, 3233 阿波羅灣, 澳洲
             </div>
         </section>
@@ -236,7 +264,7 @@
             <ul class="timeline">
                 <li><span class="time">07:30</span>出發 (早餐可以前一天先準備好)</li>
                 <li><span class="time">08:50</span>Gibson Steps <a href="https://maps.google.com/?q=Gibson+Steps" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>十二門徒 <a href="https://www.google.com/maps/place/?q=place_id:ChIJEWhPKBGegqoR8I2bMrxr7dE" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>十二門徒 <a href="https://maps.google.com/?q=Twelve+Apostles+Victoria" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li>阿德湖峽 <a href="https://maps.google.com/?q=Loch+Ard+Gorge" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li>午餐：坎貝爾港 (12:00要吃完) <a href="https://maps.google.com/?q=Port+Campbell+Victoria" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li>London Bridge (20分鐘) <a href="https://maps.google.com/?q=London+Bridge+Great+Ocean+Road" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
@@ -245,10 +273,10 @@
                 <li><span class="time">15:30</span>到 Build-A-Bear Workshop 買比比和憨比衣服 <a href="https://maps.google.com/?q=Build-A-Bear+Workshop+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li><span class="time">16:30</span>離開去還車</li>
                 <li><span class="time">17:00</span>還車，接著去飯店 Check in</li>
-                <li><span class="time">19:00</span>晚餐：Max on Hardware (袋鼠肉) <a href="https://www.google.com/maps/place/?q=place_id:ChIJYSmyK8hC1moRBj7OVQ2UhkA" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li><span class="time">19:00</span>晚餐：Max on Hardware (袋鼠肉) <a href="https://maps.google.com/?q=Max+on+Hardware+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
             </ul>
             <div class="accommodation">
-                <strong>🏨 住宿：Airbnb</strong> <a href="https://www.google.com/maps/place/?q=place_id:ChIJk_7tczVd1moRsaYditbkf5k" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a><br>
+                <strong>🏨 住宿：Airbnb</strong> <a href="https://maps.google.com/?q=370+Queen+St+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a><br>
                 📍 Queen Street 370, 3000 墨爾本, 澳洲
             </div>
         </section>
@@ -257,7 +285,7 @@
         <section id="day5" class="day-card">
             <h2>📅 9/2 (三) 市場與企鵝島</h2>
             <ul class="timeline">
-                <li>早上去 維多利亞市場 (買水果和吃早餐) <a href="https://www.google.com/maps/place/?q=place_id:ChIJsVeQNzRd1moRUNQyBXZWBA8" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>早上去 維多利亞市場 (買水果和吃早餐) <a href="https://maps.google.com/?q=Queen+Victoria+Market" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li><span class="time">10:30</span>集合</li>
                 <li>行程：kkday一日遊 (蒸汽火車、企鵝島)</li>
             </ul>
@@ -271,16 +299,16 @@
         <section id="day6" class="day-card">
             <h2>📅 9/3 (四) 市區慢活漫步</h2>
             <ul class="timeline">
-                <li>早餐：去買 Monforte Viennoiserie 可頌(7:30開)再看看 <a href="https://www.google.com/maps/place/?q=place_id:ChIJSefXNexD1moR3O9jXsS5y0M" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>再去咖啡廳 HEEBI <a href="https://www.google.com/maps/place/?q=place_id:ChIJQWi7YgBD1moRYUmWAw1OxfU" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 或是 Good Measure <a href="https://www.google.com/maps/place/?q=place_id:ChIJBwYNYs5D1moR8N657h-bHVQ" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 買咖啡</li>
-                <li>去 聖巴特利爵主教座堂 St. Patrick's Cathedral <a href="https://www.google.com/maps/place/?q=place_id:ChIJq5z0TsRC1moRoPbHvgub8is" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 和 庫克小屋 <a href="https://www.google.com/maps/place/?q=place_id:ChIJs9V-S8JC1moRSfWb7e1X9S0" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>去買冰 Gelateria Primavera <a href="https://www.google.com/maps/place/?q=place_id:ChIJU6k8EsZC1moRqaMkjGMwjA4" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>午餐：越南河粉 Madame Yen-CBD <a href="https://www.google.com/maps/place/?q=place_id:ChIJlXFNAABD1moRHLxbK3mYwSo" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>維多利亞圖書館 <a href="https://www.google.com/maps/place/?q=place_id:ChIJ6RxLlctC1moReA6DqUtnh_E" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>去買 Aesop <a href="https://www.google.com/maps/place/?q=place_id:ChIJ-60lTMpC1moRLu9bWXLZw_w" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 和伴手禮買 喜茶 HEYTEA <a href="https://www.google.com/maps/place/?q=place_id:ChIJnSoAuAFD1moRz-XLU1oBhzY" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>去超市 Woolworths <a href="https://www.google.com/maps/place/?q=place_id:ChIJkZW8RMpC1moRixH-wBRZiRg" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>早餐：去買 Monforte Viennoiserie 可頌(7:30開)再看看 <a href="https://maps.google.com/?q=Monforte+Viennoiserie+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>再去咖啡廳 HEEBI <a href="https://maps.google.com/?q=HEEBI+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 或是 Good Measure <a href="https://maps.google.com/?q=Good+Measure+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 買咖啡</li>
+                <li>去 聖巴特利爵主教座堂 St. Patrick's Cathedral <a href="https://maps.google.com/?q=St+Patrick's+Cathedral+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 和 庫克小屋 <a href="https://maps.google.com/?q=Cooks'+Cottage+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>去買冰 Gelateria Primavera <a href="https://maps.google.com/?q=Gelateria+Primavera+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>午餐：越南河粉 Madame Yen-CBD <a href="https://maps.google.com/?q=Madame+Yen+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>維多利亞圖書館 <a href="https://maps.google.com/?q=State+Library+Victoria" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>去買 Aesop <a href="https://maps.google.com/?q=Aesop+Melbourne+CBD" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 和伴手禮買 喜茶 HEYTEA <a href="https://maps.google.com/?q=HEYTEA+Swanston+St+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>去超市 Woolworths <a href="https://maps.google.com/?q=Woolworths+Melbourne+CBD" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li>有時間可以回民宿放東西</li>
-                <li><span class="time">19:30</span>晚餐：ARU (已訂位 gmail) <a href="https://www.google.com/maps/place/?q=place_id:ChIJARJd34JD1moRT-KQvI2OYDA" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li><span class="time">19:30</span>晚餐：ARU (已訂位 gmail) <a href="https://maps.google.com/?q=ARU+Restaurant+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li>吃完看要不要去車站看燈光</li>
             </ul>
             <div class="accommodation">
@@ -294,14 +322,14 @@
             <h2>📅 9/4 (五) 最後市區巡禮與返程</h2>
             <ul class="timeline">
                 <li>早餐：看自己煮還是退房去咖啡廳</li>
-                <li><span class="time">10:00</span>退房，前往附近 O2 Shop 寄放行李 (費用：小件 $8/天、大件 $12/天) <a href="https://www.google.com/maps/place/?q=place_id:ChIJdT2juTRd1moRq3Pd0604wSU" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>皇家拱廊 (早餐) 逛逛 <a href="https://www.google.com/maps/place/?q=place_id:ChIJeaaLoLVC1moRb4lG29-HxpI" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>Agathé Pâtisserie Petite 買可頌 <a href="https://www.google.com/maps/place/?q=place_id:ChIJxWP3Qh9D1moRX_AKlZyQ5CE" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>，旁邊有 UGG</li>
-                <li>去 費蓮達火車站 拍照 <a href="https://www.google.com/maps/place/?q=place_id:ChIJ37dEaM1C1moRI849xU-IQQw" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li><span class="time">10:00</span>退房，前往附近 O2 Shop 寄放行李 (費用：小件 $8/天、大件 $12/天) <a href="https://maps.google.com/?q=O2shop+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>皇家拱廊 (早餐) 逛逛 <a href="https://maps.google.com/?q=Royal+Arcade+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>Agathé Pâtisserie Petite 買可頌 <a href="https://maps.google.com/?q=Agathe+Patisserie+Petite+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>，旁邊有 UGG</li>
+                <li>去 費蓮達火車站 拍照 <a href="https://maps.google.com/?q=Flinders+Street+Railway+Station" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li>午餐：</li>
-                <li>咖啡街 <a href="https://www.google.com/maps/place/?q=place_id:ChIJ4T2ZIMtC1moRU-zX05mR2b8" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>墨爾本舊監獄 <a href="https://www.google.com/maps/place/?q=place_id:ChIJYUcwasxC1moResepeNQs7Z0" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>最後去 ALDI 超市補買 <a href="https://www.google.com/maps/place/?q=place_id:ChIJi4BYp8xC1moRLGHP3_UQ7Lg" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>咖啡街 <a href="https://maps.google.com/?q=Degraves+Street+Melbourne" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>墨爾本舊監獄 <a href="https://maps.google.com/?q=Old+Melbourne+Gaol" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>最後去 ALDI 超市補買 <a href="https://maps.google.com/?q=ALDI+Melbourne+CBD" target="_blank" class="map-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li>回 O2 拿行李</li>
                 <li>晚餐：看要早點吃還是去機場貴賓室</li>
                 <li><span class="time">18:50</span>到達機場</li>
@@ -327,6 +355,9 @@
         </div>
 
     </main>
+
+    <!-- 回到頂部按鈕 -->
+    <a href="#top" class="back-to-top" title="回到頂部">⬆️</a>
 
 </body>
 </html>
