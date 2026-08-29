@@ -73,6 +73,51 @@
             padding: 20px;
         }
 
+        /* 搜尋框樣式 */
+        .search-container {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 14px 20px 14px 45px;
+            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            outline: none;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+        
+        .search-input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
         .day-card {
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
@@ -81,6 +126,7 @@
             padding: 25px;
             border-top: 5px solid var(--secondary-color);
             scroll-margin-top: 70px;
+            transition: all 0.3s ease;
         }
         
         .day-card h2 {
@@ -100,6 +146,7 @@
             position: relative;
             padding-left: 20px;
             margin-bottom: 15px;
+            transition: opacity 0.2s ease;
         }
         
         ul.timeline li::before {
@@ -208,6 +255,17 @@
 
     <main>
         
+        <!-- 搜尋功能區塊 -->
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" class="search-input" placeholder="搜尋行程 (例如：咖啡、企鵝、網球、餐廳、租車)..." oninput="searchItinerary()">
+        </div>
+        
+        <!-- 找不到結果時的提示 -->
+        <div id="noResultsMsg" class="no-results" style="display: none;">
+            找不到包含此關鍵字的行程 🥲<br><span style="font-size: 0.9em; color: #999;">請嘗試輸入其他詞彙，或是清空搜尋框還原所有行程。</span>
+        </div>
+
         <!-- 8/29 -->
         <section id="day1" class="day-card">
             <h2>📅 8/29 (六) 出發</h2>
@@ -335,7 +393,9 @@
         <section id="day6" class="day-card">
             <h2>📅 9/3 (四) 市區慢活漫步</h2>
             <ul class="timeline">
+                <li>行程：早起打網球</li>
                 <li>早餐：去買 Monforte Viennoiserie 可頌(7:30開)再看看 <a href="https://maps.google.com/?q=Monforte+Viennoiserie+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>維多利亞市場 (依建議路線，買完可頌後前往) <a href="https://maps.google.com/?q=Queen+Victoria+Market" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li>再去咖啡廳 HEEBI <a href="https://maps.google.com/?q=HEEBI+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 或是 Good Measure <a href="https://maps.google.com/?q=Good+Measure+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 買咖啡
                     <div class="suggestion">
                         <strong>☕ 咖啡備註 (CBD冠軍精選)：</strong>這天的市區漫步，強烈建議把以下幾間人氣名店加入雷達：<br>
@@ -349,11 +409,16 @@
                 <li>午餐：越南河粉 Madame Yen-CBD <a href="https://maps.google.com/?q=Madame+Yen+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li>維多利亞圖書館 <a href="https://maps.google.com/?q=State+Library+Victoria" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li>去買 Aesop <a href="https://maps.google.com/?q=Aesop+Melbourne+CBD" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 和伴手禮買 喜茶 HEYTEA <a href="https://maps.google.com/?q=HEYTEA+Swanston+St+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>去超市 Woolworths <a href="https://maps.google.com/?q=Woolworths+Melbourne+CBD" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li>傍晚往市區南側逛：費蓮達火車站、聯邦廣場、聖保羅大教堂、咖啡街 Degraves St</li>
+                <li>去超市 Woolworths 買伴手禮 <a href="https://maps.google.com/?q=Woolworths+Melbourne+CBD" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li>有時間可以回民宿放東西</li>
                 <li><span class="time">19:30</span>晚餐：ARU (已訂位 gmail) <a href="https://maps.google.com/?q=ARU+Restaurant+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
                 <li>吃完看要不要去車站看燈光</li>
             </ul>
+            <div class="suggestion">
+                <strong>💡 路線順序建議：</strong><br>
+                早上網球+買可頌 ➔ 走去旁邊的「維多利亞市場」 ➔ 往南走到「維多利亞圖書館」 ➔ 午餐 ➔ 往東去「聖派屈克主教座堂+庫克小屋」 ➔ 傍晚往市區南側一次逛完「車站/廣場/大教堂/咖啡街」 ➔ 逛超市 ➔ 晚餐 ARU
+            </div>
             <div class="accommodation">
                 <strong>🏨 住宿：Airbnb</strong><br>
                 📍 Queen Street 370, 3000 墨爾本, 澳洲
@@ -366,7 +431,7 @@
             <ul class="timeline">
                 <li>早餐：看自己煮還是退房去咖啡廳</li>
                 <li><span class="time">10:00</span>退房，前往附近 O2 Shop 寄放行李 (費用：小件 $8/天、大件 $12/天) <a href="https://maps.google.com/?q=O2shop+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>皇家拱廊 (早餐) 逛逛 <a href="https://maps.google.com/?q=Royal+Arcade+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>
+                <li>皇家展拱廊 (早餐) 與 布洛克拱廊 (新增，就在皇家展拱廊旁邊) 逛逛 <a href="https://maps.google.com/?q=Royal+Arcade+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>
                     <div class="suggestion">
                         <strong>☕ 咖啡備註：</strong>早上在皇家拱廊周邊逛街時，可以順道造訪 <strong>Market Lane Coffee - Mitchell House</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Mitchell+House" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>，這間分店採光極佳、氣氛悠閒，是採買伴手禮前絕佳的休憩站。
                     </div>
@@ -386,6 +451,10 @@
                 <li><span class="time">18:50</span>到達機場</li>
                 <li><span class="time">21:50</span>起飛</li>
             </ul>
+            <div class="suggestion">
+                <strong>💡 路線順序建議：</strong><br>
+                退房寄放行李後 ➔ 前往市區中心的「皇家/布洛克雙拱廊」吃早餐逛街 ➔ 下午慢慢往北走去「墨爾本舊監獄」 ➔ 傍晚回 O2 Shop 拿行李去機場。
+            </div>
         </section>
 
         <!-- 9/5 -->
@@ -401,7 +470,7 @@
             <ul>
                 <li>蒸汽火車建議確認行駛日期。</li>
                 <li>咖啡/餐廳參考：排咖咖啡廳、亞拉河畔餐廳。</li>
-                <li>其他景點：維多利亞女王市場、維多利亞州立圖書館、美術館、皇家展廊。</li>
+                <li>其他景點：維多利亞女王市場、維多利亞州立圖書館、美術館、皇家展廊、墨爾本大學。</li>
                 <li><strong>租車文件：</strong>請將 <code>訂單1008874568提車單.pdf</code> 與此網頁放置在同一個資料夾下，即可直接點擊連結開啟。</li>
             </ul>
         </div>
@@ -411,5 +480,75 @@
     <!-- 回到頂部按鈕 -->
     <a href="#top" class="back-to-top" title="回到頂部">⬆️</a>
 
+    <!-- 搜尋功能的 JavaScript -->
+    <script>
+        function searchItinerary() {
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
+            const days = document.querySelectorAll('.day-card');
+            let hasAnyVisibleDay = false;
+
+            days.forEach(day => {
+                let hasVisibleItem = false;
+
+                // 1. 搜尋時間線項目 (li)
+                const timelineItems = day.querySelectorAll('.timeline > li');
+                timelineItems.forEach(item => {
+                    if (item.textContent.toLowerCase().includes(searchText)) {
+                        item.style.display = '';
+                        hasVisibleItem = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // 2. 搜尋住宿區塊 (.accommodation)
+                const accommodations = day.querySelectorAll('.accommodation');
+                accommodations.forEach(acc => {
+                    if (acc.textContent.toLowerCase().includes(searchText)) {
+                        acc.style.display = '';
+                        hasVisibleItem = true;
+                    } else {
+                        acc.style.display = 'none';
+                    }
+                });
+                
+                // 3. 搜尋獨立的建議區塊 (.suggestion 剛好在最外層的)
+                const suggestions = day.querySelectorAll('.suggestion');
+                suggestions.forEach(sug => {
+                    // 只處理直接在 day 裡面的 suggestion (排除已經包在 li 裡面的，交給上面 li 去控制顯示)
+                    if (sug.parentElement === day) {
+                        if (sug.textContent.toLowerCase().includes(searchText)) {
+                            sug.style.display = '';
+                            hasVisibleItem = true;
+                        } else {
+                            sug.style.display = 'none';
+                        }
+                    }
+                });
+
+                // 4. 如果「當天標題」包含搜尋字，或是「搜尋框為空」，就把當天所有元素都顯示出來
+                const dayTitle = day.querySelector('h2').textContent.toLowerCase();
+                if (dayTitle.includes(searchText) || searchText === '') {
+                    hasVisibleItem = true;
+                    timelineItems.forEach(item => item.style.display = '');
+                    accommodations.forEach(acc => acc.style.display = '');
+                    suggestions.forEach(sug => {
+                        if (sug.parentElement === day) sug.style.display = '';
+                    });
+                }
+
+                // 5. 控制整天的卡片是否顯示
+                if (hasVisibleItem) {
+                    day.style.display = '';
+                    hasAnyVisibleDay = true;
+                } else {
+                    day.style.display = 'none';
+                }
+            });
+
+            // 6. 顯示或隱藏「找不到結果」提示
+            document.getElementById('noResultsMsg').style.display = hasAnyVisibleDay ? 'none' : 'block';
+        }
+    </script>
 </body>
 </html>
