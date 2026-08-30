@@ -42,7 +42,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             z-index: 1000;
             display: flex;
-            justify-content: flex-start; /* 改靠左對齊以容納較多按鈕 */
+            justify-content: flex-start; 
             overflow-x: auto;
             padding: 10px;
             gap: 10px;
@@ -201,23 +201,6 @@
         .action-link:hover { background-color: #f8f9fa; transform: translateY(-1px); }
         .action-link img { width: 14px; height: 14px; margin-right: 5px; }
 
-        /* 回到頂部按鈕 (右下) */
-        .back-to-top {
-            position: fixed; bottom: 30px; right: 30px; background-color: var(--primary-color); color: white;
-            width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            text-decoration: none; font-size: 1.2rem; opacity: 0.9; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-        .back-to-top:hover { opacity: 1; transform: translateY(-3px); }
-
-        /* 記帳系統浮動按鈕 (左下) */
-        .budget-fab {
-            position: fixed; bottom: 30px; left: 30px; background-color: #ff9800; color: white;
-            width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            text-decoration: none; font-size: 1.3rem; opacity: 0.95; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-        }
-        .budget-fab:hover { opacity: 1; transform: translateY(-3px); background-color: #f57c00; }
     </style>
 </head>
 <body id="top">
@@ -269,8 +252,8 @@
                 <li data-time="15:00">找一間咖啡廳
                     <div class="suggestion">
                         <strong>☕ 咖啡備註 (最順路推薦)：</strong>來到南墨爾本，強烈建議將這兩家排入此時段：<br>
-                        • <strong>ST. ALi Coffee Roasters</strong>：非常適合午餐後悠閒坐下來喝杯招牌冰滴咖啡。<br>
-                        • <strong>Market Lane Coffee</strong>：就緊鄰在市場旁，外帶一杯單品拿鐵邊走邊喝最佳選擇。
+                        • <strong>ST. ALi Coffee Roasters</strong> <a href="https://maps.google.com/?q=ST.+ALi+Coffee+Roasters+South+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>：非常適合午餐後悠閒坐下來喝杯招牌冰滴咖啡。<br>
+                        • <strong>Market Lane Coffee</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+South+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>：就緊鄰在市場旁，外帶一杯單品拿鐵邊走邊喝最佳選擇。
                     </div>
                 </li>
                 <li data-time="16:00">去 DFO South Wharf Outlet 買 UGG 鞋子</li>
@@ -320,7 +303,11 @@
                 <li data-time="12:40">The Grotto(20分鐘)</li>
                 <li data-time="13:00"><span class="time">12:30</span>離開</li>
                 <li data-time="15:30" data-loc-index="1"><span class="time">15:30</span>到 Build-A-Bear Workshop 去買比比和憨比衣服</li>
-                <li data-time="16:30" data-loc-index="1"><span class="time">16:30</span>離開去還車</li>
+                <li data-time="16:30" data-loc-index="1"><span class="time">16:30</span>離開去還車
+                    <div class="suggestion">
+                        <strong>☕ 咖啡備註：</strong>如果回程路上有行經 Port Melbourne，可以看看 <strong>ST. ALi (Port Melbourne 分店)</strong> <a href="https://maps.google.com/?q=ST.+ALi+Coffee+Roasters+Port+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> 是否還有營業順手買一杯 (該店通常下午兩點打烊，可碰碰運氣)。
+                    </div>
+                </li>
                 <li data-time="17:00" data-loc-index="1"><span class="time">17:00</span>還車
                     <div class="suggestion"><strong>🚗 還車備註：</strong>此時段需自助還車，鑰匙放灰色保險箱。</div>
                 </li>
@@ -336,7 +323,13 @@
         <section id="day5" class="day-card" data-date="2026-09-02" data-loc-index="1">
             <h2>📅 9/2 (三) 市場與企鵝島</h2>
             <ul class="timeline">
-                <li data-time="09:00">早上去維多利亞市場買水果和吃早餐</li>
+                <li data-time="09:00">早上去維多利亞市場買水果和吃早餐
+                    <div class="suggestion">
+                        <strong>☕ 咖啡備註 (市場必備)：</strong>維多利亞市場周邊是 <strong>Market Lane Coffee</strong> 的大本營：<br>
+                        • <strong>Dairy Hall 分店</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Dairy+Hall" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>：就在乳製品大廳內，逛攤位最對味。<br>
+                        • <strong>Victoria St 分店</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Victoria+St" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> 或 <strong>Queen St 分店</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Queen+St" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>：採買前後坐下來稍作休息的最佳選擇。
+                    </div>
+                </li>
                 <li data-time="10:30"><span class="time">10:30</span>集合</li>
                 <li data-time="14:00">行程：kkday一日遊 (蒸汽火車、企鵝島)</li>
             </ul>
@@ -351,8 +344,15 @@
             <ul class="timeline">
                 <li data-time="07:00">行程：早起打網球</li>
                 <li data-time="08:30">早餐：去買 Monforte Viennoiserie 可頌(7:30開)再看看</li>
-                <li data-time="10:00">再去咖啡廳 HEEBI</li>
-                <li data-time="11:00">或是 Good Measure 買咖啡</li>
+                <li data-time="10:00">再去咖啡廳 HEEBI <a href="https://maps.google.com/?q=HEEBI+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a></li>
+                <li data-time="11:00">或是 Good Measure 買咖啡 <a href="https://maps.google.com/?q=Good+Measure+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>
+                    <div class="suggestion">
+                        <strong>☕ 咖啡備註 (CBD冠軍精選)：</strong>這天的市區漫步，也強烈推薦將以下幾間人氣名店加入雷達：<br>
+                        • <strong>Brother Baba Budan</strong> <a href="https://maps.google.com/?q=Brother+Baba+Budan+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>：早上在 CBD 經過時可外帶一杯，順便拍經典的椅子天花板。<br>
+                        • <strong>Seven Seeds Coffee Roasters</strong> <a href="https://maps.google.com/?q=Seven+Seeds+Coffee+Roasters+Carlton" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>：位於圖書館附近的工業風本店，適合早午餐。<br>
+                        • <strong>Patricia Coffee Brewers</strong> <a href="https://maps.google.com/?q=Patricia+Coffee+Brewers+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>：下午逛街累了，可以繞去這間隱身商業區後巷的高人氣站立咖啡廳。
+                    </div>
+                </li>
                 <li data-time="12:00">去 聖巴特利爵主教座堂 St. Patrick's Cathedral 和庫克小屋</li>
                 <li data-time="13:00">去買冰 Gelateria Primavera</li>
                 <li data-time="13:30">午餐：越南河粉 Madame Yen-CBD</li>
@@ -376,9 +376,17 @@
             <ul class="timeline">
                 <li data-time="08:00">早餐 看自己煮還是退房去咖啡廳</li>
                 <li data-time="10:00"><span class="time">10:00</span>退房，前往附近 O2 Shop 寄放行李 (費用：小件 $8/天、大件 $12/天)</li>
-                <li data-time="11:00">皇家拱廊 (早餐)逛逛，以及布洛克拱廊</li>
+                <li data-time="11:00">皇家拱廊 (早餐)逛逛，以及布洛克拱廊
+                    <div class="suggestion">
+                        <strong>☕ 咖啡備註：</strong>早上在皇家拱廊周邊逛街時，可以順道造訪 <strong>Market Lane Coffee - Mitchell House</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Mitchell+House" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>，採光極佳、氣氛悠閒。
+                    </div>
+                </li>
                 <li data-time="12:00">Agathé Pâtisserie Petite 買可頌，旁邊有 UGG</li>
-                <li data-time="13:00">去 費蓮達火車站 拍照</li>
+                <li data-time="13:00">去 費蓮達火車站 拍照
+                    <div class="suggestion">
+                        <strong>☕ 咖啡備註：</strong>在火車站與咖啡街周圍，絕對不能錯過 <strong>Dukes Coffee Roasters</strong> <a href="https://maps.google.com/?q=Dukes+Coffee+Roasters+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>！在 Flinders Lane 上排隊買一杯高人氣拿鐵。
+                    </div>
+                </li>
                 <li data-time="14:00">午餐 :</li>
                 <li data-time="14:30">咖啡街</li>
                 <li data-time="15:30">墨爾本舊監獄</li>
@@ -399,13 +407,6 @@
         </section>
 
     </main>
-
-    <!-- 浮動按鈕區 -->
-    <!-- 記帳系統按鈕 (左下) -->
-    <a href="https://cyhong1988.github.io/group_travel_budget_system_cloud.github.io/" target="_blank" class="budget-fab" title="開啟記帳系統">💰</a>
-    
-    <!-- 回到頂部按鈕 (右下) -->
-    <a href="#top" class="back-to-top" title="回到頂部">⬆️</a>
 
     <script>
         // --- 搜尋功能 ---
