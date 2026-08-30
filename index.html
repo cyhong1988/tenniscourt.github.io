@@ -16,9 +16,7 @@
             --border-radius: 12px;
         }
 
-        html {
-            scroll-behavior: smooth; /* 平滑滾動 */
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -26,7 +24,6 @@
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
         }
 
         header {
@@ -74,49 +71,15 @@
         }
 
         /* 搜尋框樣式 */
-        .search-container {
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
+        .search-container { margin-bottom: 20px; position: relative; }
         .search-input {
-            width: 100%;
-            padding: 14px 20px 14px 45px;
-            font-size: 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 30px;
-            outline: none;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-            background-color: var(--card-bg);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            width: 100%; padding: 14px 20px 14px 45px; font-size: 1rem;
+            border: 2px solid #e0e0e0; border-radius: 30px; outline: none;
+            transition: all 0.3s ease; box-sizing: border-box; background-color: var(--card-bg);
         }
-        
-        .search-input:focus {
-            border-color: var(--secondary-color);
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
-        }
-        
-        .search-icon {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            pointer-events: none;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 30px;
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-        }
+        .search-input:focus { border-color: var(--secondary-color); box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15); }
+        .search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); font-size: 1.2rem; color: var(--text-muted); }
+        .no-results { text-align: center; padding: 30px; color: var(--text-muted); font-size: 1.1rem; background: var(--card-bg); border-radius: var(--border-radius); display: none; }
 
         .day-card {
             background-color: var(--card-bg);
@@ -129,117 +92,115 @@
             transition: all 0.3s ease;
         }
         
-        .day-card h2 {
-            margin-top: 0;
-            color: var(--primary-color);
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-        }
+        .day-card h2 { margin-top: 0; color: var(--primary-color); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 12px; }
 
-        ul.timeline {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        ul.timeline li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 15px;
-            transition: opacity 0.2s ease;
-        }
-        
-        ul.timeline li::before {
-            content: "•";
-            color: var(--secondary-color);
-            font-size: 1.5rem;
-            position: absolute;
-            left: 0;
-            top: -5px;
-        }
-        
-        .time {
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-right: 10px;
+        /* 日出日落標籤樣式 */
+        .sun-times {
             display: inline-block;
-            min-width: 50px;
+            font-size: 0.85em;
+            color: #d35400;
+            background-color: #fff9e6;
+            padding: 5px 12px;
+            border-radius: 20px;
+            border: 1px solid #ffecb3;
+            margin-bottom: 20px;
+            font-weight: 600;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        .accommodation, .suggestion {
-            padding: 12px 15px;
-            border-radius: 4px;
-            margin-top: 15px;
-            font-size: 0.95rem;
+        /* 修正後的列表排版 */
+        ul.timeline { list-style: none; padding: 0; margin: 0; }
+        ul.timeline li { 
+            position: relative; 
+            padding-left: 25px; 
+            margin-bottom: 18px; 
+            transition: opacity 0.2s ease;
+            line-height: 1.8;
+        }
+        ul.timeline li::before { 
+            content: "•"; 
+            color: var(--secondary-color); 
+            font-size: 1.5rem; 
+            position: absolute; 
+            left: 0; 
+            top: -3px; 
+            line-height: 1;
         }
         
+        .time { 
+            font-weight: bold; 
+            color: var(--primary-color); 
+            margin-right: 5px; 
+            display: inline-block;
+        }
+
+        /* 天氣徽章樣式優化：縮小字體與內距 */
+        .weather-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: #e8f4fd;
+            color: #1976d2;
+            padding: 2px 6px; 
+            border-radius: 12px;
+            font-size: 0.75em; 
+            font-weight: 600;
+            margin-right: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            white-space: nowrap;
+            vertical-align: middle; 
+        }
+        .weather-badge.rain {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        .accommodation, .suggestion { 
+            padding: 12px 15px; 
+            border-radius: 4px; 
+            margin-top: 10px; 
+            font-size: 0.95rem; 
+            width: auto;
+            display: block; 
+            line-height: 1.6;
+        }
         .accommodation { background-color: #e8f4fd; border-left: 4px solid var(--secondary-color); }
         .suggestion { background-color: #fff8e1; border-left: 4px solid #ffc107; }
 
-        /* 按鈕樣式 */
+        /* 按鈕樣式優化 */
         .action-link {
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            margin-left: 8px;
+            text-decoration: none; 
+            display: inline-flex; 
+            align-items: center; 
+            margin-left: 5px; 
+            margin-bottom: 3px;
             padding: 4px 10px;
-            background-color: #ffffff;
-            border-radius: 16px;
-            font-size: 0.85em;
-            color: #1a73e8;
+            background-color: #ffffff; 
+            border-radius: 16px; 
+            font-size: 0.85em; 
+            color: #1a73e8; 
             font-weight: 600;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border: 1px solid #dadce0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+            border: 1px solid #dadce0; 
             transition: all 0.2s ease;
             vertical-align: middle;
         }
-        .action-link:hover {
-            background-color: #f8f9fa;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-            transform: translateY(-1px);
-        }
-        .action-link img {
-            width: 14px;
-            height: 14px;
-            margin-right: 5px;
-        }
-        
-        /* 檔案下載按鈕特殊樣式 */
-        .pdf-link {
-            color: #d32f2f;
-        }
+        .action-link:hover { background-color: #f8f9fa; transform: translateY(-1px); }
+        .action-link img { width: 14px; height: 14px; margin-right: 5px; }
+        .pdf-link { color: #d32f2f; }
 
-        /* 回到頂部按鈕 */
         .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--primary-color);
-            color: white;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            opacity: 0.9;
-            transition: all 0.3s ease;
-            z-index: 1000;
+            position: fixed; bottom: 30px; right: 30px; background-color: var(--primary-color); color: white;
+            width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            text-decoration: none; font-size: 1.2rem; opacity: 0.9; z-index: 1000;
         }
-        .back-to-top:hover {
-            opacity: 1;
-            transform: translateY(-3px);
-        }
+        .back-to-top:hover { opacity: 1; transform: translateY(-3px); }
     </style>
 </head>
 <body id="top">
 
     <header>
         <h1>🇦🇺 墨爾本自由行行程表</h1>
-        <p>8/29 - 9/5 ｜ 澳洲放鬆之旅</p>
+        <p>8/29 - 9/5 ｜ 即時天氣與日出日落同步預報 ⛅</p>
     </header>
 
     <nav>
@@ -254,134 +215,105 @@
     </nav>
 
     <main>
-        
-        <!-- 搜尋功能區塊 -->
         <div class="search-container">
             <span class="search-icon">🔍</span>
             <input type="text" id="searchInput" class="search-input" placeholder="搜尋行程 (例如：咖啡、企鵝、網球、餐廳、租車)..." oninput="searchItinerary()">
         </div>
-        
-        <!-- 找不到結果時的提示 -->
-        <div id="noResultsMsg" class="no-results" style="display: none;">
-            找不到包含此關鍵字的行程 🥲<br><span style="font-size: 0.9em; color: #999;">請嘗試輸入其他詞彙，或是清空搜尋框還原所有行程。</span>
-        </div>
+        <div id="noResultsMsg" class="no-results">找不到包含此關鍵字的行程 🥲</div>
 
-        <!-- 8/29 -->
-        <section id="day1" class="day-card">
+        <!-- Loc-index: 0:桃園, 1:墨爾本, 2:Lorne, 3:ApolloBay, 4:PortCampbell -->
+        
+        <section id="day1" class="day-card" data-date="2026-08-29" data-loc-index="0">
             <h2>📅 8/29 (六) 出發</h2>
             <ul class="timeline">
-                <li><span class="time">19:00</span>湛高峰出門搭計程車</li>
-                <li><span class="time">19:25</span>高鐵往桃園</li>
-                <li><span class="time">20:02</span>機捷往第二航廈</li>
-                <li><span class="time">20:18</span>抵達第二航廈 <a href="https://maps.google.com/?q=桃園機場第二航廈" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li><span class="time">23:30</span>起飛</li>
+                <li data-time="19:00"><span class="time">19:00</span>湛高峰出門搭計程車</li>
+                <li data-time="19:25"><span class="time">19:25</span>高鐵往桃園</li>
+                <li data-time="20:02"><span class="time">20:02</span>機捷往第二航廈</li>
+                <li data-time="20:18"><span class="time">20:18</span>抵達第二航廈 <a href="https://maps.google.com/?q=桃園機場第二航廈" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a></li>
+                <li data-time="23:30"><span class="time">23:30</span>起飛</li>
             </ul>
         </section>
 
-        <!-- 8/30 -->
-        <section id="day2" class="day-card">
+        <section id="day2" class="day-card" data-date="2026-08-30" data-loc-index="1">
             <h2>📅 8/30 (日) 抵達墨爾本與市區採買</h2>
             <ul class="timeline">
-                <li><span class="time">10:40</span>抵達墨爾本機場 <a href="https://maps.google.com/?q=Melbourne+Airport" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>搭巴士到市區再轉</li>
-                <li><span class="time">13:00</span>約到飯店放行李</li>
-                <li>南墨爾本市場 (Claypots Evening Star餐廳) <a href="https://maps.google.com/?q=Claypots+Evening+Star+South+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>找一間咖啡廳
+                <li data-time="10:40"><span class="time">10:40</span>抵達墨爾本機場 <a href="https://maps.google.com/?q=Melbourne+Airport" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a></li>
+                <li data-time="11:30">搭巴士到市區再轉</li>
+                <li data-time="13:00"><span class="time">13:00</span>約到飯店放行李</li>
+                <li data-time="13:30">南墨爾本市場 (Claypots Evening Star餐廳) <a href="https://maps.google.com/?q=Claypots+Evening+Star+South+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a></li>
+                <li data-time="15:00">找一間咖啡廳
                     <div class="suggestion">
                         <strong>☕ 咖啡備註 (最順路推薦)：</strong>來到南墨爾本，強烈建議將這兩家排入此時段：<br>
-                        • <strong>ST. ALi Coffee Roasters (南墨爾本總店)</strong> <a href="https://maps.google.com/?q=ST.+ALi+Coffee+Roasters+South+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>：距離市場約步行5-10分鐘，非常適合午餐後悠閒坐下來喝杯招牌冰滴咖啡。<br>
-                        • <strong>Market Lane Coffee (南墨爾本分店)</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+South+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>：就緊鄰在市場旁，若想快速外帶一杯單品拿鐵邊走邊喝，這裡是最佳選擇。
+                        • <strong>ST. ALi Coffee Roasters</strong>：非常適合午餐後悠閒坐下來喝杯招牌冰滴咖啡。<br>
+                        • <strong>Market Lane Coffee</strong>：就緊鄰在市場旁，外帶一杯單品拿鐵邊走邊喝最佳選擇。
                     </div>
                 </li>
-                <li>去 DFO South Wharf Outlet 買 UGG 鞋子 <a href="https://maps.google.com/?q=DFO+South+Wharf+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>晚餐前先去超市買 Road trip 的食物</li>
-                <li>去飯店 Check in</li>
-                <li>晚餐：亞拉河畔</li>
+                <li data-time="16:00">去 DFO South Wharf Outlet 買 UGG 鞋子</li>
+                <li data-time="17:30">晚餐前先去超市買 Road trip 的食物</li>
+                <li data-time="18:00">去飯店 Check in</li>
+                <li data-time="19:00">晚餐：亞拉河畔</li>
             </ul>
             <div class="accommodation">
-                <strong>🏨 住宿：Oakwood Premier Melbourne</strong> <a href="https://maps.google.com/?q=Oakwood+Premier+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a><br>
+                <strong>🏨 住宿：Oakwood Premier Melbourne</strong><br>
                 📍 202 Normanby Road, 南岸, 3006 墨爾本, 澳洲
             </div>
         </section>
 
-        <!-- 8/31 -->
-        <section id="day3" class="day-card">
+        <section id="day3" class="day-card" data-date="2026-08-31" data-loc-index="2">
             <h2>📅 8/31 (一) 大洋路自駕上集</h2>
             <ul class="timeline">
-                <li><span class="time">07:30</span>出發 / <span class="time">08:00</span>租車 / <span class="time">08:30</span>開車
-                    <div class="suggestion">
-                        <strong>🚗 取車備註 (SIXT 南墨爾本店)：</strong> 
-                        <a href="訂單1008874568提車單.pdf" target="_blank" class="action-link pdf-link">📄 開啟提車單 PDF</a><br>
-                        • <strong>車行位置：</strong>101-109 THISTLETHWAITE STREET, SOUTH MELBOURNE (輕軌站步行約10分鐘)。<br>
-                        • <strong>預訂內容：</strong>車型為 Kia Stonic 或同組車款 (自排、5座)。主駕駛人：HONG CHENGYU，提車憑證號：9733674047。<br>
-                        • <strong>保險防雷：</strong>訂單已包含國內承保的「超級補充全險」。若門市推銷額外保險請禮貌拒絕即可，無需向店員提及已購買國內保險以免被誤加費用。
-                    </div>
+                <li data-time="07:30" data-loc-index="1"><span class="time">07:30</span>出發 / <span class="time">08:00</span>租車 / <span class="time">08:30</span>開車
+                    <div class="suggestion"><strong>🚗 取車備註 (SIXT 南墨爾本店)：</strong>訂單包含國內承保超級補充全險。</div>
                 </li>
-                <li>看有沒有要停留 Sunnymead Cliff lookout 2 休息 <a href="https://maps.google.com/?q=Sunnymead+Cliff+lookout+2" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li><span class="time">10:30</span>到 Memorial Arch 紀念拱門 <a href="https://maps.google.com/?q=Memorial+Arch+at+Eastern+View" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>去 Foodworks 超市</li>
-                <li>午餐去 Lorne 吃炸魚薯條或越南河粉，逛一下紀念品店 <a href="https://maps.google.com/?q=Lorne+Victoria" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>車程 1.5 小時到燈塔 (沿路樹上可能都有無尾熊)</li>
-                <li>去 Cape Otway Lightstation 尋找無尾熊 <a href="https://maps.google.com/?q=Cape+Otway+Lightstation" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>結束後去 Fauna Australia Wildlife Retreat 看袋熊 <a href="https://maps.google.com/?q=Fauna+Australia+Wildlife+Retreat" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>開回飯店 50 分鐘</li>
-                <li><span class="time">17:30</span>天黑，要注意時間</li>
-                <li>之後去飯店 Check in</li>
-                <li>吃冰淇淋和晚餐</li>
+                <li data-time="10:00">看有沒有要停留 Sunnymead Cliff lookout 2 休息</li>
+                <li data-time="10:30"><span class="time">10:30</span>到 Memorial Arch 紀念拱門</li>
+                <li data-time="11:00">去 Foodworks 超市</li>
+                <li data-time="12:00">午餐去 Lorne 吃炸魚薯條或越南河粉和逛一下紀念品店</li>
+                <li data-time="13:30">車程 1.5 小時到燈塔 (沿路樹上可能都有無尾熊)</li>
+                <li data-time="15:00" data-loc-index="3">去 Cape Otway Lightstation 尋找無尾熊</li>
+                <li data-time="16:30" data-loc-index="3">結束後去 Fauna Australia Wildlife Retreat 看袋熊</li>
+                <li data-time="17:20" data-loc-index="3">開回飯店 50 分鐘</li>
+                <li data-time="17:30" data-loc-index="3"><span class="time">17:30</span>天黑 要注意時間</li>
+                <li data-time="18:30" data-loc-index="3">之後去飯店 Check in</li>
+                <li data-time="19:30" data-loc-index="3">吃冰淇淋和晚餐</li>
             </ul>
             <div class="accommodation">
-                <strong>🏨 住宿：The International Motel Apollo Bay</strong> <a href="https://maps.google.com/?q=The+International+Motel+Apollo+Bay" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a><br>
+                <strong>🏨 住宿：The International Motel Apollo Bay</strong><br>
                 📍 37 Great Ocean Road, 3233 阿波羅灣, 澳洲
             </div>
         </section>
 
-        <!-- 9/1 -->
-        <section id="day4" class="day-card">
+        <section id="day4" class="day-card" data-date="2026-09-01" data-loc-index="4">
             <h2>📅 9/1 (二) 大洋路自駕下集與市區</h2>
             <ul class="timeline">
-                <li><span class="time">07:30</span>出發 (早餐可以前一天先準備好)</li>
-                <li><span class="time">08:50</span>Gibson Steps <a href="https://maps.google.com/?q=Gibson+Steps" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>十二門徒 <a href="https://maps.google.com/?q=Twelve+Apostles+Victoria" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>阿德湖峽 <a href="https://maps.google.com/?q=Loch+Ard+Gorge" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>午餐：坎貝爾港 (12:00要吃完) <a href="https://maps.google.com/?q=Port+Campbell+Victoria" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>London Bridge (20分鐘) <a href="https://maps.google.com/?q=London+Bridge+Great+Ocean+Road" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>The Grotto (20分鐘) <a href="https://maps.google.com/?q=The+Grotto+Great+Ocean+Road" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li><span class="time">12:30</span>離開</li>
-                <li><span class="time">15:30</span>到 Build-A-Bear Workshop 買比比和憨比衣服 <a href="https://maps.google.com/?q=Build-A-Bear+Workshop+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li><span class="time">16:30</span>離開去還車
-                    <div class="suggestion">
-                        <strong>☕ 咖啡備註：</strong>如果回程路上有行經 Port Melbourne，且時間還算早，可以碰碰運氣看 <strong>ST. ALi (Port Melbourne 分店)</strong> <a href="https://maps.google.com/?q=ST.+ALi+Coffee+Roasters+Port+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 是否還有營業順手買一杯，不過該店通常下午兩點打烊，若來不及也沒關係，市區還有很多選擇。
-                    </div>
+                <li data-time="07:30" data-loc-index="3"><span class="time">07:30</span>出發 早餐可以前一天先準備好</li>
+                <li data-time="08:50"><span class="time">08:50</span>Gibson Steps</li>
+                <li data-time="09:30">十二門徒</li>
+                <li data-time="10:30">阿德湖峽</li>
+                <li data-time="11:30">午餐 坎貝爾港 12:00要吃完</li>
+                <li data-time="12:10">London Bridge(20分鐘)</li>
+                <li data-time="12:40">The Grotto(20分鐘)</li>
+                <li data-time="13:00"><span class="time">12:30</span>離開</li>
+                <li data-time="15:30" data-loc-index="1"><span class="time">15:30</span>到 Build-A-Bear Workshop 去買比比和憨比衣服</li>
+                <li data-time="16:30" data-loc-index="1"><span class="time">16:30</span>離開去還車</li>
+                <li data-time="17:00" data-loc-index="1"><span class="time">17:00</span>還車
+                    <div class="suggestion"><strong>🚗 還車備註：</strong>此時段需自助還車，鑰匙放灰色保險箱。</div>
                 </li>
-                <li><span class="time">17:00</span>還車，接著去飯店 Check in
-                    <div class="suggestion">
-                        <strong>🚗 還車備註 (非營業時間自助還車)：</strong> 
-                        <a href="訂單1008874568提車單.pdf" target="_blank" class="action-link pdf-link">📄 開啟提車單 PDF</a><br>
-                        • SIXT 門市營業時間僅至 16:45，此時段還車需依循非營業時間自助還車流程。<br>
-                        • <strong>停車與還鑰匙：</strong>將車停在 Thistlethwaite 街或 99 號與 101 號之間的巷道盡頭。面對大樓左側巷道順著牆往內走約 10 公尺，將鑰匙放入牆上的灰色抽屜保險箱並確認關好。
-                    </div>
-                </li>
-                <li><span class="time">19:00</span>晚餐：Max on Hardware (袋鼠肉) <a href="https://maps.google.com/?q=Max+on+Hardware+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
+                <li data-time="17:30" data-loc-index="1">去飯店 Check in</li>
+                <li data-time="19:00" data-loc-index="1"><span class="time">19:00</span>晚餐：Max on Hardware-袋鼠肉</li>
             </ul>
             <div class="accommodation">
-                <strong>🏨 住宿：Airbnb</strong> <a href="https://maps.google.com/?q=370+Queen+St+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a><br>
+                <strong>🏨 住宿：Airbnb</strong><br>
                 📍 Queen Street 370, 3000 墨爾本, 澳洲
             </div>
         </section>
 
-        <!-- 9/2 -->
-        <section id="day5" class="day-card">
+        <section id="day5" class="day-card" data-date="2026-09-02" data-loc-index="1">
             <h2>📅 9/2 (三) 市場與企鵝島</h2>
             <ul class="timeline">
-                <li>早上去 維多利亞市場 (買水果和吃早餐) <a href="https://maps.google.com/?q=Queen+Victoria+Market" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>
-                    <div class="suggestion">
-                        <strong>☕ 咖啡備註 (市場必備)：</strong>維多利亞市場周邊是 <strong>Market Lane Coffee</strong> 的大本營，吃早餐時請務必搭配一杯：<br>
-                        • <strong>Dairy Hall 分店</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Dairy+Hall" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>：就在乳製品大廳內，拿在手上一邊逛市場攤位最對味。<br>
-                        • <strong>Victoria St 分店</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Victoria+St" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 或 <strong>Queen St 分店</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Queen+St" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>：若人在市場外圍，這兩間非常適合採買前後坐下來稍作休息。
-                    </div>
-                </li>
-                <li><span class="time">10:30</span>集合</li>
-                <li>行程：kkday一日遊 (蒸汽火車、企鵝島)</li>
+                <li data-time="09:00">早上去維多利亞市場買水果和吃早餐</li>
+                <li data-time="10:30"><span class="time">10:30</span>集合</li>
+                <li data-time="14:00">行程：kkday一日遊 (蒸汽火車、企鵝島)</li>
             </ul>
             <div class="accommodation">
                 <strong>🏨 住宿：Airbnb</strong><br>
@@ -389,99 +321,64 @@
             </div>
         </section>
 
-        <!-- 9/3 -->
-        <section id="day6" class="day-card">
+        <section id="day6" class="day-card" data-date="2026-09-03" data-loc-index="1">
             <h2>📅 9/3 (四) 市區慢活漫步</h2>
             <ul class="timeline">
-                <li>行程：早起打網球</li>
-                <li>早餐：去買 Monforte Viennoiserie 可頌(7:30開)再看看 <a href="https://maps.google.com/?q=Monforte+Viennoiserie+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>維多利亞市場 (依建議路線，買完可頌後前往) <a href="https://maps.google.com/?q=Queen+Victoria+Market" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>再去咖啡廳 HEEBI <a href="https://maps.google.com/?q=HEEBI+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 或是 Good Measure <a href="https://maps.google.com/?q=Good+Measure+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 買咖啡
-                    <div class="suggestion">
-                        <strong>☕ 咖啡備註 (CBD冠軍精選)：</strong>這天的市區漫步，強烈建議把以下幾間人氣名店加入雷達：<br>
-                        • <strong>Brother Baba Budan</strong> <a href="https://maps.google.com/?q=Brother+Baba+Budan+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>：早上在 CBD 經過時直接外帶一杯，順便拍經典的椅子天花板。<br>
-                        • <strong>Seven Seeds Coffee Roasters</strong> <a href="https://maps.google.com/?q=Seven+Seeds+Coffee+Roasters+Carlton" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>：如果在維多利亞圖書館附近想走遠一點吃早午餐（往 Carlton 區方向），這間由倉庫改建的工業風本店非常適合上午或中午前往。<br>
-                        • <strong>Patricia Coffee Brewers</strong> <a href="https://maps.google.com/?q=Patricia+Coffee+Brewers+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>：下午逛街累了，可以繞去這間隱身商業區後巷的站立咖啡廳，體驗當地白領零距離互動的喝咖啡日常。
-                    </div>
-                </li>
-                <li>去 聖巴特利爵主教座堂 St. Patrick's Cathedral <a href="https://maps.google.com/?q=St+Patrick's+Cathedral+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 和 庫克小屋 <a href="https://maps.google.com/?q=Cooks'+Cottage+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>去買冰 Gelateria Primavera <a href="https://maps.google.com/?q=Gelateria+Primavera+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>午餐：越南河粉 Madame Yen-CBD <a href="https://maps.google.com/?q=Madame+Yen+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>維多利亞圖書館 <a href="https://maps.google.com/?q=State+Library+Victoria" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>去買 Aesop <a href="https://maps.google.com/?q=Aesop+Melbourne+CBD" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a> 和伴手禮買 喜茶 HEYTEA <a href="https://maps.google.com/?q=HEYTEA+Swanston+St+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>傍晚往市區南側逛：費蓮達火車站、聯邦廣場、聖保羅大教堂、咖啡街 Degraves St</li>
-                <li>去超市 Woolworths 買伴手禮 <a href="https://maps.google.com/?q=Woolworths+Melbourne+CBD" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>有時間可以回民宿放東西</li>
-                <li><span class="time">19:30</span>晚餐：ARU (已訂位 gmail) <a href="https://maps.google.com/?q=ARU+Restaurant+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>吃完看要不要去車站看燈光</li>
+                <li data-time="07:00">行程：早起打網球</li>
+                <li data-time="08:30">早餐：去買 Monforte Viennoiserie 可頌(7:30開)再看看</li>
+                <li data-time="10:00">再去咖啡廳 HEEBI</li>
+                <li data-time="11:00">或是 Good Measure 買咖啡</li>
+                <li data-time="12:00">去 聖巴特利爵主教座堂 St. Patrick's Cathedral 和庫克小屋</li>
+                <li data-time="13:00">去買冰 Gelateria Primavera</li>
+                <li data-time="13:30">午餐：越南河粉 Madame Yen-CBD</li>
+                <li data-time="15:00">維多利亞圖書館</li>
+                <li data-time="16:00">去買 Aesop 和伴手禮買喜茶</li>
+                <li data-time="17:00">傍晚往市區南側逛：費蓮達火車站、聯邦廣場、聖保羅大教堂、咖啡街 Degraves St</li>
+                <li data-time="18:00">去超市 woolworths</li>
+                <li data-time="18:30">有時間可以回民宿放東西</li>
+                <li data-time="19:30"><span class="time">19:30</span>晚餐：ARU 已訂位(gmail)</li>
+                <li data-time="21:30">吃完看要不要去車站看燈光</li>
             </ul>
-            <div class="suggestion">
-                <strong>💡 路線順序建議：</strong><br>
-                早上網球+買可頌 ➔ 走去旁邊的「維多利亞市場」 ➔ 往南走到「維多利亞圖書館」 ➔ 午餐 ➔ 往東去「聖派屈克主教座堂+庫克小屋」 ➔ 傍晚往市區南側一次逛完「車站/廣場/大教堂/咖啡街」 ➔ 逛超市 ➔ 晚餐 ARU
-            </div>
+            <div class="suggestion"><strong>💡 路線順序建議：</strong>網球 ➔ 圖書館 ➔ 聖派屈克 ➔ 車站/廣場/大教堂/咖啡街 ➔ 逛超市 ➔ ARU晚餐</div>
             <div class="accommodation">
                 <strong>🏨 住宿：Airbnb</strong><br>
                 📍 Queen Street 370, 3000 墨爾本, 澳洲
             </div>
         </section>
 
-        <!-- 9/4 -->
-        <section id="day7" class="day-card">
+        <section id="day7" class="day-card" data-date="2026-09-04" data-loc-index="1">
             <h2>📅 9/4 (五) 最後市區巡禮與返程</h2>
             <ul class="timeline">
-                <li>早餐：看自己煮還是退房去咖啡廳</li>
-                <li><span class="time">10:00</span>退房，前往附近 O2 Shop 寄放行李 (費用：小件 $8/天、大件 $12/天) <a href="https://maps.google.com/?q=O2shop+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>皇家展拱廊 (早餐) 與 布洛克拱廊 (新增，就在皇家展拱廊旁邊) 逛逛 <a href="https://maps.google.com/?q=Royal+Arcade+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>
-                    <div class="suggestion">
-                        <strong>☕ 咖啡備註：</strong>早上在皇家拱廊周邊逛街時，可以順道造訪 <strong>Market Lane Coffee - Mitchell House</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Mitchell+House" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>，這間分店採光極佳、氣氛悠閒，是採買伴手禮前絕佳的休憩站。
-                    </div>
-                </li>
-                <li>Agathé Pâtisserie Petite 買可頌 <a href="https://maps.google.com/?q=Agathe+Patisserie+Petite+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>，旁邊有 UGG</li>
-                <li>去 費蓮達火車站 拍照 <a href="https://maps.google.com/?q=Flinders+Street+Railway+Station" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>
-                    <div class="suggestion">
-                        <strong>☕ 咖啡備註：</strong>在火車站與咖啡街周圍，絕對不能錯過 <strong>Dukes Coffee Roasters</strong> <a href="https://maps.google.com/?q=Dukes+Coffee+Roasters+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a>！它就在 Flinders Lane 上，非常適合在火車站拍完照後，來這裡排隊買一杯高人氣的拿鐵或長黑咖啡。
-                    </div>
-                </li>
-                <li>午餐：</li>
-                <li>咖啡街 <a href="https://maps.google.com/?q=Degraves+Street+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>墨爾本舊監獄 <a href="https://maps.google.com/?q=Old+Melbourne+Gaol" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>最後去 ALDI 超市補買 <a href="https://maps.google.com/?q=ALDI+Melbourne+CBD" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Google Map">地圖</a></li>
-                <li>回 O2 拿行李</li>
-                <li>晚餐：看要早點吃還是去機場貴賓室</li>
-                <li><span class="time">18:50</span>到達機場</li>
-                <li><span class="time">21:50</span>起飛</li>
+                <li data-time="08:00">早餐 看自己煮還是退房去咖啡廳</li>
+                <li data-time="10:00"><span class="time">10:00</span>退房，前往附近 O2 Shop 寄放行李 (費用：小件 $8/天、大件 $12/天)</li>
+                <li data-time="11:00">皇家拱廊 (早餐)逛逛，以及布洛克拱廊</li>
+                <li data-time="12:00">Agathé Pâtisserie Petite 買可頌，旁邊有 UGG</li>
+                <li data-time="13:00">去 費蓮達火車站 拍照</li>
+                <li data-time="14:00">午餐 :</li>
+                <li data-time="14:30">咖啡街</li>
+                <li data-time="15:30">墨爾本舊監獄</li>
+                <li data-time="17:00">最後去 Aldi 超市補買</li>
+                <li data-time="17:30">回 O2 拿行李</li>
+                <li data-time="18:00">晚餐 : 看要早點吃還是去機場貴賓室</li>
+                <li data-time="18:50"><span class="time">18:50</span>到達機場</li>
+                <li data-time="21:50"><span class="time">21:50</span>起飛</li>
             </ul>
-            <div class="suggestion">
-                <strong>💡 路線順序建議：</strong><br>
-                退房寄放行李後 ➔ 前往市區中心的「皇家/布洛克雙拱廊」吃早餐逛街 ➔ 下午慢慢往北走去「墨爾本舊監獄」 ➔ 傍晚回 O2 Shop 拿行李去機場。
-            </div>
+            <div class="suggestion"><strong>💡 路線順序建議：</strong>寄放行李 ➔ 皇家/布洛克雙拱廊 ➔ 墨爾本舊監獄 ➔ 拿行李去機場</div>
         </section>
 
-        <!-- 9/5 -->
-        <section id="day8" class="day-card">
+        <section id="day8" class="day-card" data-date="2026-09-05" data-loc-index="0">
             <h2>📅 9/5 (六) 抵達台灣</h2>
             <ul class="timeline">
-                <li><span class="time">05:15</span>抵達桃機</li>
+                <li data-time="05:15"><span class="time">05:15</span>抵達桃機</li>
             </ul>
         </section>
-        
-        <div style="background-color: #f1f2f6; padding: 20px; border-radius: 12px; margin-top: 40px; color: #666;">
-            <h3 style="margin-top:0; color:#2c3e50;">📝 備註</h3>
-            <ul>
-                <li>蒸汽火車建議確認行駛日期。</li>
-                <li>咖啡/餐廳參考：排咖咖啡廳、亞拉河畔餐廳。</li>
-                <li>其他景點：維多利亞女王市場、維多利亞州立圖書館、美術館、皇家展廊、墨爾本大學。</li>
-                <li><strong>租車文件：</strong>請將 <code>訂單1008874568提車單.pdf</code> 與此網頁放置在同一個資料夾下，即可直接點擊連結開啟。</li>
-            </ul>
-        </div>
 
     </main>
 
-    <!-- 回到頂部按鈕 -->
     <a href="#top" class="back-to-top" title="回到頂部">⬆️</a>
 
-    <!-- 搜尋功能的 JavaScript -->
     <script>
+        // --- 搜尋功能 ---
         function searchItinerary() {
             const searchText = document.getElementById('searchInput').value.toLowerCase();
             const days = document.querySelectorAll('.day-card');
@@ -489,66 +386,128 @@
 
             days.forEach(day => {
                 let hasVisibleItem = false;
-
-                // 1. 搜尋時間線項目 (li)
                 const timelineItems = day.querySelectorAll('.timeline > li');
                 timelineItems.forEach(item => {
-                    if (item.textContent.toLowerCase().includes(searchText)) {
-                        item.style.display = '';
-                        hasVisibleItem = true;
-                    } else {
-                        item.style.display = 'none';
-                    }
+                    if (item.textContent.toLowerCase().includes(searchText)) { item.style.display = 'block'; hasVisibleItem = true; }
+                    else { item.style.display = 'none'; }
                 });
 
-                // 2. 搜尋住宿區塊 (.accommodation)
-                const accommodations = day.querySelectorAll('.accommodation');
-                accommodations.forEach(acc => {
-                    if (acc.textContent.toLowerCase().includes(searchText)) {
-                        acc.style.display = '';
-                        hasVisibleItem = true;
-                    } else {
-                        acc.style.display = 'none';
-                    }
-                });
-                
-                // 3. 搜尋獨立的建議區塊 (.suggestion 剛好在最外層的)
-                const suggestions = day.querySelectorAll('.suggestion');
-                suggestions.forEach(sug => {
-                    // 只處理直接在 day 裡面的 suggestion (排除已經包在 li 裡面的，交給上面 li 去控制顯示)
-                    if (sug.parentElement === day) {
-                        if (sug.textContent.toLowerCase().includes(searchText)) {
-                            sug.style.display = '';
-                            hasVisibleItem = true;
-                        } else {
-                            sug.style.display = 'none';
+                const extras = day.querySelectorAll('.accommodation, .suggestion, .sun-times');
+                extras.forEach(ext => {
+                    if (ext.parentElement === day || ext.classList.contains('sun-times')) {
+                        if (ext.textContent.toLowerCase().includes(searchText) && !ext.classList.contains('sun-times')) { 
+                            ext.style.display = 'block'; hasVisibleItem = true; 
+                        } else if (ext.classList.contains('sun-times')) {
+                            // 日出日落標籤根據父層顯示狀況決定
+                        } else { 
+                            ext.style.display = 'none'; 
                         }
                     }
                 });
 
-                // 4. 如果「當天標題」包含搜尋字，或是「搜尋框為空」，就把當天所有元素都顯示出來
                 const dayTitle = day.querySelector('h2').textContent.toLowerCase();
                 if (dayTitle.includes(searchText) || searchText === '') {
                     hasVisibleItem = true;
-                    timelineItems.forEach(item => item.style.display = '');
-                    accommodations.forEach(acc => acc.style.display = '');
-                    suggestions.forEach(sug => {
-                        if (sug.parentElement === day) sug.style.display = '';
-                    });
+                    timelineItems.forEach(item => item.style.display = 'block');
+                    extras.forEach(ext => { if (ext.parentElement === day || ext.classList.contains('sun-times')) ext.style.display = 'inline-block'; });
+                    day.querySelectorAll('.accommodation, .suggestion').forEach(el => el.style.display = 'block');
                 }
 
-                // 5. 控制整天的卡片是否顯示
-                if (hasVisibleItem) {
-                    day.style.display = '';
-                    hasAnyVisibleDay = true;
-                } else {
-                    day.style.display = 'none';
-                }
+                if (hasVisibleItem) { day.style.display = 'block'; hasAnyVisibleDay = true; }
+                else { day.style.display = 'none'; }
             });
 
-            // 6. 顯示或隱藏「找不到結果」提示
             document.getElementById('noResultsMsg').style.display = hasAnyVisibleDay ? 'none' : 'block';
         }
+
+        // --- 氣象與日出日落預報抓取 ---
+        const locations = [
+            { name: "Taoyuan", lat: 25.0777, lon: 121.2328 },        // Index 0
+            { name: "Melbourne", lat: -37.8136, lon: 144.9631 },     // Index 1
+            { name: "Lorne", lat: -38.5407, lon: 143.9754 },         // Index 2
+            { name: "ApolloBay", lat: -38.7573, lon: 143.6662 },     // Index 3
+            { name: "PortCampbell", lat: -38.6212, lon: 143.0003 }   // Index 4
+        ];
+        
+        const lats = locations.map(l => l.lat).join(',');
+        const lons = locations.map(l => l.lon).join(',');
+        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lons}&hourly=temperature_2m,precipitation_probability,weather_code&daily=sunrise,sunset&timezone=auto&start_date=2026-08-29&end_date=2026-09-05`;
+
+        function getWeatherIcon(code) {
+            if (code === 0) return '☀️'; 
+            if (code === 1 || code === 2 || code === 3) return '⛅'; 
+            if (code >= 45 && code <= 48) return '🌫️'; 
+            if (code >= 51 && code <= 67) return '🌧️'; 
+            if (code >= 71 && code <= 77) return '❄️'; 
+            if (code >= 80 && code <= 82) return '🌦️'; 
+            if (code >= 95 && code <= 99) return '⛈️'; 
+            return '☁️';
+        }
+
+        async function fetchWeather() {
+            try {
+                const response = await fetch(weatherUrl);
+                const data = await response.json();
+
+                document.querySelectorAll('section.day-card').forEach(section => {
+                    const dateStr = section.getAttribute('data-date');
+                    const defaultLoc = section.getAttribute('data-loc-index');
+
+                    if (dateStr && defaultLoc !== null && data[defaultLoc] && data[defaultLoc].daily) {
+                        const locData = data[defaultLoc];
+                        const dIndex = locData.daily.time.indexOf(dateStr);
+                        if (dIndex !== -1 && locData.daily.sunrise[dIndex] && locData.daily.sunset[dIndex]) {
+                            const sunriseStr = locData.daily.sunrise[dIndex].split('T')[1];
+                            const sunsetStr = locData.daily.sunset[dIndex].split('T')[1];
+                            
+                            const sunDiv = document.createElement('div');
+                            sunDiv.className = 'sun-times';
+                            sunDiv.innerHTML = `🌅 日出 ${sunriseStr} ｜ 🌇 日落 ${sunsetStr}`;
+                            
+                            const h2 = section.querySelector('h2');
+                            h2.parentNode.insertBefore(sunDiv, h2.nextSibling);
+                        }
+                    }
+
+                    section.querySelectorAll('li').forEach(li => {
+                        const timeAttr = li.getAttribute('data-time');
+                        if (timeAttr && dateStr) {
+                            const hourStr = timeAttr.split(':')[0].padStart(2, '0');
+                            const targetTime = `${dateStr}T${hourStr}:00`;
+                            
+                            const locIndex = li.hasAttribute('data-loc-index') ? li.getAttribute('data-loc-index') : defaultLoc;
+
+                            if (locIndex !== null && data[locIndex]) {
+                                const locData = data[locIndex];
+                                const tIndex = locData.hourly.time.indexOf(targetTime);
+                                
+                                if (tIndex !== -1) {
+                                    const temp = Math.round(locData.hourly.temperature_2m[tIndex]);
+                                    const precip = locData.hourly.precipitation_probability[tIndex];
+                                    const code = locData.hourly.weather_code[tIndex];
+                                    const icon = getWeatherIcon(code);
+
+                                    const badge = document.createElement('span');
+                                    badge.className = 'weather-badge ' + (precip >= 40 ? 'rain' : '');
+                                    badge.innerHTML = `${icon} ${temp}°C 💧${precip}%`;
+
+                                    const timeSpan = li.querySelector('.time');
+                                    if (timeSpan) {
+                                        timeSpan.parentNode.insertBefore(badge, timeSpan.nextSibling);
+                                    } else {
+                                        li.insertBefore(badge, li.firstChild);
+                                    }
+                                }
+                            }
+                        }
+                    });
+                });
+            } catch (error) {
+                console.error("無法抓取天氣預報:", error);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', fetchWeather);
     </script>
 </body>
 </html>
