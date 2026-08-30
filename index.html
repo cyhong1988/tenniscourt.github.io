@@ -48,7 +48,6 @@
             gap: 10px;
         }
         
-        /* 隱藏導覽列的捲軸但保留滑動功能 */
         nav::-webkit-scrollbar { display: none; }
         nav { -ms-overflow-style: none; scrollbar-width: none; }
         
@@ -68,7 +67,6 @@
             color: white;
         }
 
-        /* 記帳系統特別樣式 (Nav) */
         nav a.budget-nav-btn {
             background-color: #ff9800;
             color: white;
@@ -84,7 +82,6 @@
             padding: 20px;
         }
 
-        /* 搜尋框樣式 */
         .search-container { margin-bottom: 20px; position: relative; }
         .search-input {
             width: 100%; padding: 14px 20px 14px 45px; font-size: 1rem;
@@ -108,7 +105,6 @@
         
         .day-card h2 { margin-top: 0; color: var(--primary-color); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 12px; }
 
-        /* 日出日落標籤樣式 */
         .sun-times {
             display: inline-block;
             font-size: 0.85em;
@@ -122,7 +118,6 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        /* 列表排版 */
         ul.timeline { list-style: none; padding: 0; margin: 0; }
         ul.timeline li { 
             position: relative; 
@@ -148,7 +143,6 @@
             display: inline-block;
         }
 
-        /* 天氣徽章樣式 */
         .weather-badge {
             display: inline-flex;
             align-items: center;
@@ -168,6 +162,26 @@
             color: #c62828;
         }
 
+        /* 營業時間標籤樣式 */
+        .open-time {
+            display: inline-flex;
+            align-items: center;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-left: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+        .open-time.warning {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
         .accommodation, .suggestion { 
             padding: 12px 15px; 
             border-radius: 4px; 
@@ -180,7 +194,6 @@
         .accommodation { background-color: #e8f4fd; border-left: 4px solid var(--secondary-color); }
         .suggestion { background-color: #fff8e1; border-left: 4px solid #ffc107; }
 
-        /* 按鈕樣式優化 */
         .action-link {
             text-decoration: none; 
             display: inline-flex; 
@@ -248,15 +261,15 @@
                 <li data-time="10:40"><span class="time">10:40</span>抵達墨爾本機場 <a href="https://maps.google.com/?q=Melbourne+Airport" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a></li>
                 <li data-time="11:30">搭巴士到市區再轉</li>
                 <li data-time="13:00"><span class="time">13:00</span>約到飯店放行李</li>
-                <li data-time="13:30">南墨爾本市場 (Claypots Evening Star餐廳) <a href="https://maps.google.com/?q=Claypots+Evening+Star+South+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a></li>
+                <li data-time="13:30">南墨爾本市場 (Claypots Evening Star餐廳) <a href="https://maps.google.com/?q=Claypots+Evening+Star+South+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> <span class="open-time">🕒 週日 08:00-16:00</span></li>
                 <li data-time="15:00">找一間咖啡廳
                     <div class="suggestion">
                         <strong>☕ 咖啡備註 (最順路推薦)：</strong>來到南墨爾本，強烈建議將這兩家排入此時段：<br>
-                        • <strong>ST. ALi Coffee Roasters</strong> <a href="https://maps.google.com/?q=ST.+ALi+Coffee+Roasters+South+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>：非常適合午餐後悠閒坐下來喝杯招牌冰滴咖啡。<br>
-                        • <strong>Market Lane Coffee</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+South+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>：就緊鄰在市場旁，外帶一杯單品拿鐵邊走邊喝最佳選擇。
+                        • <strong>ST. ALi Coffee Roasters</strong> <a href="https://maps.google.com/?q=ST.+ALi+Coffee+Roasters+South+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> <span class="open-time">🕒 07:00-17:00</span><br>
+                        • <strong>Market Lane Coffee</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+South+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> <span class="open-time">🕒 08:00-16:00</span>
                     </div>
                 </li>
-                <li data-time="16:00">去 DFO South Wharf Outlet 買 UGG 鞋子</li>
+                <li data-time="16:00">去 DFO South Wharf Outlet 買 UGG 鞋子 <span class="open-time">🕒 10:00-18:00</span></li>
                 <li data-time="17:30">晚餐前先去超市買 Road trip 的食物</li>
                 <li data-time="18:00">去飯店 Check in</li>
                 <li data-time="19:00">晚餐：亞拉河畔</li>
@@ -271,15 +284,15 @@
             <h2>📅 8/31 (一) 大洋路自駕上集</h2>
             <ul class="timeline">
                 <li data-time="07:30" data-loc-index="1"><span class="time">07:30</span>出發 / <span class="time">08:00</span>租車 / <span class="time">08:30</span>開車
-                    <div class="suggestion"><strong>🚗 取車備註 (SIXT 南墨爾本店)：</strong>訂單包含國內承保超級補充全險。</div>
+                    <div class="suggestion"><strong>🚗 取車備註 (SIXT 南墨爾本店)：</strong>訂單包含國內承保超級補充全險。 <span class="open-time">🕒 08:00-16:45</span></div>
                 </li>
-                <li data-time="10:00">看有沒有要停留 Sunnymead Cliff lookout 2 休息</li>
-                <li data-time="10:30"><span class="time">10:30</span>到 Memorial Arch 紀念拱門</li>
-                <li data-time="11:00">去 Foodworks 超市</li>
+                <li data-time="10:00">看有沒有要停留 Sunnymead Cliff lookout 2 休息 <span class="open-time">🕒 24小時開放</span></li>
+                <li data-time="10:30"><span class="time">10:30</span>到 Memorial Arch 紀念拱門 <span class="open-time">🕒 24小時開放</span></li>
+                <li data-time="11:00">去 Foodworks 超市 <span class="open-time">🕒 08:00-20:00</span></li>
                 <li data-time="12:00">午餐去 Lorne 吃炸魚薯條或越南河粉和逛一下紀念品店</li>
                 <li data-time="13:30">車程 1.5 小時到燈塔 (沿路樹上可能都有無尾熊)</li>
-                <li data-time="15:00" data-loc-index="3">去 Cape Otway Lightstation 尋找無尾熊</li>
-                <li data-time="16:30" data-loc-index="3">結束後去 Fauna Australia Wildlife Retreat 看袋熊</li>
+                <li data-time="15:00" data-loc-index="3">去 Cape Otway Lightstation 尋找無尾熊 <span class="open-time">🕒 10:00-17:00 (16:30最後入場)</span></li>
+                <li data-time="16:30" data-loc-index="3">結束後去 Fauna Australia Wildlife Retreat 看袋熊 <span class="open-time">🕒 開放至傍晚</span></li>
                 <li data-time="17:20" data-loc-index="3">開回飯店 50 分鐘</li>
                 <li data-time="17:30" data-loc-index="3"><span class="time">17:30</span>天黑 要注意時間</li>
                 <li data-time="18:30" data-loc-index="3">之後去飯店 Check in</li>
@@ -295,24 +308,24 @@
             <h2>📅 9/1 (二) 大洋路自駕下集與市區</h2>
             <ul class="timeline">
                 <li data-time="07:30" data-loc-index="3"><span class="time">07:30</span>出發 早餐可以前一天先準備好</li>
-                <li data-time="08:50"><span class="time">08:50</span>Gibson Steps</li>
-                <li data-time="09:30">十二門徒</li>
-                <li data-time="10:30">阿德湖峽</li>
+                <li data-time="08:50"><span class="time">08:50</span>Gibson Steps <span class="open-time">🕒 24小時 (建議白天)</span></li>
+                <li data-time="09:30">十二門徒 <span class="open-time">🕒 24小時 (建議白天)</span></li>
+                <li data-time="10:30">阿德湖峽 <span class="open-time">🕒 24小時 (建議白天)</span></li>
                 <li data-time="11:30">午餐 坎貝爾港 12:00要吃完</li>
-                <li data-time="12:10">London Bridge(20分鐘)</li>
-                <li data-time="12:40">The Grotto(20分鐘)</li>
+                <li data-time="12:10">London Bridge(20分鐘) <span class="open-time">🕒 24小時 (建議白天)</span></li>
+                <li data-time="12:40">The Grotto(20分鐘) <span class="open-time">🕒 24小時 (建議白天)</span></li>
                 <li data-time="13:00"><span class="time">12:30</span>離開</li>
-                <li data-time="15:30" data-loc-index="1"><span class="time">15:30</span>到 Build-A-Bear Workshop 去買比比和憨比衣服</li>
+                <li data-time="15:30" data-loc-index="1"><span class="time">15:30</span>到 Build-A-Bear Workshop 去買比比和憨比衣服 <span class="open-time">🕒 10:00-18:00</span></li>
                 <li data-time="16:30" data-loc-index="1"><span class="time">16:30</span>離開去還車
                     <div class="suggestion">
-                        <strong>☕ 咖啡備註：</strong>如果回程路上有行經 Port Melbourne，可以看看 <strong>ST. ALi (Port Melbourne 分店)</strong> <a href="https://maps.google.com/?q=ST.+ALi+Coffee+Roasters+Port+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> 是否還有營業順手買一杯 (該店通常下午兩點打烊，可碰碰運氣)。
+                        <strong>☕ 咖啡備註：</strong>如果回程路上有行經 Port Melbourne，可以看看 <strong>ST. ALi (Port Melbourne 分店)</strong> <a href="https://maps.google.com/?q=ST.+ALi+Coffee+Roasters+Port+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> <span class="open-time">🕒 通常營業至14:00</span>
                     </div>
                 </li>
                 <li data-time="17:00" data-loc-index="1"><span class="time">17:00</span>還車
                     <div class="suggestion"><strong>🚗 還車備註：</strong>此時段需自助還車，鑰匙放灰色保險箱。</div>
                 </li>
                 <li data-time="17:30" data-loc-index="1">去飯店 Check in</li>
-                <li data-time="19:00" data-loc-index="1"><span class="time">19:00</span>晚餐：Max on Hardware-袋鼠肉</li>
+                <li data-time="19:00" data-loc-index="1"><span class="time">19:00</span>晚餐：Max on Hardware-袋鼠肉 <span class="open-time">🕒 17:00-22:30</span></li>
             </ul>
             <div class="accommodation">
                 <strong>🏨 住宿：Airbnb</strong><br>
@@ -323,11 +336,11 @@
         <section id="day5" class="day-card" data-date="2026-09-02" data-loc-index="1">
             <h2>📅 9/2 (三) 市場與企鵝島</h2>
             <ul class="timeline">
-                <li data-time="09:00">早上去維多利亞市場買水果和吃早餐
+                <li data-time="09:00">早上去維多利亞市場買水果和吃早餐 <span class="open-time warning">🕒 週三公休 (請留意)</span>
                     <div class="suggestion">
                         <strong>☕ 咖啡備註 (市場必備)：</strong>維多利亞市場周邊是 <strong>Market Lane Coffee</strong> 的大本營：<br>
-                        • <strong>Dairy Hall 分店</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Dairy+Hall" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>：就在乳製品大廳內，逛攤位最對味。<br>
-                        • <strong>Victoria St 分店</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Victoria+St" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> 或 <strong>Queen St 分店</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Queen+St" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>：採買前後坐下來稍作休息的最佳選擇。
+                        • <strong>Dairy Hall 分店</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Dairy+Hall" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> <span class="open-time warning">🕒 週三跟隨市場公休</span><br>
+                        • <strong>Victoria St 分店</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Victoria+St" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> / <strong>Queen St 分店</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Queen+St" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> <span class="open-time">🕒 週三 08:00-14:00</span>
                     </div>
                 </li>
                 <li data-time="10:30"><span class="time">10:30</span>集合</li>
@@ -343,25 +356,26 @@
             <h2>📅 9/3 (四) 市區慢活漫步</h2>
             <ul class="timeline">
                 <li data-time="07:00">行程：早起打網球</li>
-                <li data-time="08:30">早餐：去買 Monforte Viennoiserie 可頌(7:30開)再看看</li>
+                <li data-time="08:30">早餐：去買 Monforte Viennoiserie 可頌再看看 <span class="open-time">🕒 07:30-14:00 (售完為止)</span></li>
+                <li data-time="09:30">維多利亞市場 <span class="open-time">🕒 06:00-15:00</span></li>
                 <li data-time="10:00">再去咖啡廳 HEEBI <a href="https://maps.google.com/?q=HEEBI+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a></li>
-                <li data-time="11:00">或是 Good Measure 買咖啡 <a href="https://maps.google.com/?q=Good+Measure+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>
+                <li data-time="11:00">或是 Good Measure 買咖啡 <a href="https://maps.google.com/?q=Good+Measure+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> <span class="open-time">🕒 07:00-16:00</span>
                     <div class="suggestion">
-                        <strong>☕ 咖啡備註 (CBD冠軍精選)：</strong>這天的市區漫步，也強烈推薦將以下幾間人氣名店加入雷達：<br>
-                        • <strong>Brother Baba Budan</strong> <a href="https://maps.google.com/?q=Brother+Baba+Budan+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>：早上在 CBD 經過時可外帶一杯，順便拍經典的椅子天花板。<br>
-                        • <strong>Seven Seeds Coffee Roasters</strong> <a href="https://maps.google.com/?q=Seven+Seeds+Coffee+Roasters+Carlton" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>：位於圖書館附近的工業風本店，適合早午餐。<br>
-                        • <strong>Patricia Coffee Brewers</strong> <a href="https://maps.google.com/?q=Patricia+Coffee+Brewers+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>：下午逛街累了，可以繞去這間隱身商業區後巷的高人氣站立咖啡廳。
+                        <strong>☕ 咖啡備註 (CBD冠軍精選)：</strong><br>
+                        • <strong>Brother Baba Budan</strong> <a href="https://maps.google.com/?q=Brother+Baba+Budan+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> <span class="open-time">🕒 07:00-17:00</span><br>
+                        • <strong>Seven Seeds Coffee Roasters</strong> <a href="https://maps.google.com/?q=Seven+Seeds+Coffee+Roasters+Carlton" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> <span class="open-time">🕒 07:00-17:00</span><br>
+                        • <strong>Patricia Coffee Brewers</strong> <a href="https://maps.google.com/?q=Patricia+Coffee+Brewers+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> <span class="open-time">🕒 07:00-16:00</span>
                     </div>
                 </li>
-                <li data-time="12:00">去 聖巴特利爵主教座堂 St. Patrick's Cathedral 和庫克小屋</li>
-                <li data-time="13:00">去買冰 Gelateria Primavera</li>
-                <li data-time="13:30">午餐：越南河粉 Madame Yen-CBD</li>
-                <li data-time="15:00">維多利亞圖書館</li>
-                <li data-time="16:00">去買 Aesop 和伴手禮買喜茶</li>
+                <li data-time="12:00">去 聖巴特利爵主教座堂 St. Patrick's Cathedral <span class="open-time">🕒 09:00-17:00</span> 和庫克小屋 <span class="open-time">🕒 09:00-17:00</span></li>
+                <li data-time="13:00">去買冰 Gelateria Primavera <span class="open-time">🕒 12:00-22:00</span></li>
+                <li data-time="13:30">午餐：越南河粉 Madame Yen-CBD <span class="open-time">🕒 11:30-15:00, 17:00-21:30</span></li>
+                <li data-time="15:00">維多利亞圖書館 <span class="open-time">🕒 10:00-18:00</span></li>
+                <li data-time="16:00">去買 Aesop 和伴手禮買喜茶 <span class="open-time">🕒 通常營業至 21:00</span></li>
                 <li data-time="17:00">傍晚往市區南側逛：費蓮達火車站、聯邦廣場、聖保羅大教堂、咖啡街 Degraves St</li>
-                <li data-time="18:00">去超市 woolworths</li>
+                <li data-time="18:00">去超市 woolworths <span class="open-time">🕒 07:00-23:00</span></li>
                 <li data-time="18:30">有時間可以回民宿放東西</li>
-                <li data-time="19:30"><span class="time">19:30</span>晚餐：ARU 已訂位(gmail)</li>
+                <li data-time="19:30"><span class="time">19:30</span>晚餐：ARU 已訂位(gmail) <span class="open-time">🕒 17:30-22:00</span></li>
                 <li data-time="21:30">吃完看要不要去車站看燈光</li>
             </ul>
             <div class="suggestion"><strong>💡 路線順序建議：</strong>網球 ➔ 圖書館 ➔ 聖派屈克 ➔ 車站/廣場/大教堂/咖啡街 ➔ 逛超市 ➔ ARU晚餐</div>
@@ -375,22 +389,22 @@
             <h2>📅 9/4 (五) 最後市區巡禮與返程</h2>
             <ul class="timeline">
                 <li data-time="08:00">早餐 看自己煮還是退房去咖啡廳</li>
-                <li data-time="10:00"><span class="time">10:00</span>退房，前往附近 O2 Shop 寄放行李 (費用：小件 $8/天、大件 $12/天)</li>
-                <li data-time="11:00">皇家拱廊 (早餐)逛逛，以及布洛克拱廊
+                <li data-time="10:00"><span class="time">10:00</span>退房，前往附近 O2 Shop 寄放行李 (費用：小件 $8/天、大件 $12/天) <span class="open-time">🕒 09:00-21:00</span></li>
+                <li data-time="11:00">皇家拱廊 (早餐)逛逛，以及布洛克拱廊 <span class="open-time">🕒 週五 09:00-19:00</span>
                     <div class="suggestion">
-                        <strong>☕ 咖啡備註：</strong>早上在皇家拱廊周邊逛街時，可以順道造訪 <strong>Market Lane Coffee - Mitchell House</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Mitchell+House" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>，採光極佳、氣氛悠閒。
+                        <strong>☕ 咖啡備註：</strong> <strong>Market Lane Coffee - Mitchell House</strong> <a href="https://maps.google.com/?q=Market+Lane+Coffee+Mitchell+House" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> <span class="open-time">🕒 08:00-16:00</span>
                     </div>
                 </li>
-                <li data-time="12:00">Agathé Pâtisserie Petite 買可頌，旁邊有 UGG</li>
+                <li data-time="12:00">Agathé Pâtisserie Petite 買可頌，旁邊有 UGG <span class="open-time">🕒 08:00-15:00</span></li>
                 <li data-time="13:00">去 費蓮達火車站 拍照
                     <div class="suggestion">
-                        <strong>☕ 咖啡備註：</strong>在火車站與咖啡街周圍，絕對不能錯過 <strong>Dukes Coffee Roasters</strong> <a href="https://maps.google.com/?q=Dukes+Coffee+Roasters+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>！在 Flinders Lane 上排隊買一杯高人氣拿鐵。
+                        <strong>☕ 咖啡備註：</strong> <strong>Dukes Coffee Roasters</strong> <a href="https://maps.google.com/?q=Dukes+Coffee+Roasters+Melbourne" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a> <span class="open-time">🕒 07:00-16:30</span>
                     </div>
                 </li>
                 <li data-time="14:00">午餐 :</li>
                 <li data-time="14:30">咖啡街</li>
-                <li data-time="15:30">墨爾本舊監獄</li>
-                <li data-time="17:00">最後去 Aldi 超市補買</li>
+                <li data-time="15:30">墨爾本舊監獄 <span class="open-time">🕒 10:00-17:00</span></li>
+                <li data-time="17:00">最後去 Aldi 超市補買 <span class="open-time">🕒 08:30-20:00</span></li>
                 <li data-time="17:30">回 O2 拿行李</li>
                 <li data-time="18:00">晚餐 : 看要早點吃還是去機場貴賓室</li>
                 <li data-time="18:50"><span class="time">18:50</span>到達機場</li>
