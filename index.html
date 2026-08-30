@@ -42,11 +42,15 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             z-index: 1000;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start; /* 改靠左對齊以容納較多按鈕 */
             overflow-x: auto;
             padding: 10px;
             gap: 10px;
         }
+        
+        /* 隱藏導覽列的捲軸但保留滑動功能 */
+        nav::-webkit-scrollbar { display: none; }
+        nav { -ms-overflow-style: none; scrollbar-width: none; }
         
         nav a {
             text-decoration: none;
@@ -62,6 +66,16 @@
         nav a:hover {
             background-color: var(--secondary-color);
             color: white;
+        }
+
+        /* 記帳系統特別樣式 (Nav) */
+        nav a.budget-nav-btn {
+            background-color: #ff9800;
+            color: white;
+            box-shadow: 0 2px 5px rgba(255, 152, 0, 0.3);
+        }
+        nav a.budget-nav-btn:hover {
+            background-color: #f57c00;
         }
 
         main {
@@ -108,7 +122,7 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        /* 修正後的列表排版 */
+        /* 列表排版 */
         ul.timeline { list-style: none; padding: 0; margin: 0; }
         ul.timeline li { 
             position: relative; 
@@ -134,7 +148,7 @@
             display: inline-block;
         }
 
-        /* 天氣徽章樣式優化：縮小字體與內距 */
+        /* 天氣徽章樣式 */
         .weather-badge {
             display: inline-flex;
             align-items: center;
@@ -186,14 +200,24 @@
         }
         .action-link:hover { background-color: #f8f9fa; transform: translateY(-1px); }
         .action-link img { width: 14px; height: 14px; margin-right: 5px; }
-        .pdf-link { color: #d32f2f; }
 
+        /* 回到頂部按鈕 (右下) */
         .back-to-top {
             position: fixed; bottom: 30px; right: 30px; background-color: var(--primary-color); color: white;
             width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            text-decoration: none; font-size: 1.2rem; opacity: 0.9; z-index: 1000;
+            text-decoration: none; font-size: 1.2rem; opacity: 0.9; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
         }
         .back-to-top:hover { opacity: 1; transform: translateY(-3px); }
+
+        /* 記帳系統浮動按鈕 (左下) */
+        .budget-fab {
+            position: fixed; bottom: 30px; left: 30px; background-color: #ff9800; color: white;
+            width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            text-decoration: none; font-size: 1.3rem; opacity: 0.95; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        .budget-fab:hover { opacity: 1; transform: translateY(-3px); background-color: #f57c00; }
     </style>
 </head>
 <body id="top">
@@ -204,6 +228,7 @@
     </header>
 
     <nav>
+        <a href="https://cyhong1988.github.io/group_travel_budget_system_cloud.github.io/" target="_blank" class="budget-nav-btn">💰 記帳系統</a>
         <a href="#day1">8/29</a>
         <a href="#day2">8/30</a>
         <a href="#day3">8/31</a>
@@ -375,6 +400,11 @@
 
     </main>
 
+    <!-- 浮動按鈕區 -->
+    <!-- 記帳系統按鈕 (左下) -->
+    <a href="https://cyhong1988.github.io/group_travel_budget_system_cloud.github.io/" target="_blank" class="budget-fab" title="開啟記帳系統">💰</a>
+    
+    <!-- 回到頂部按鈕 (右下) -->
     <a href="#top" class="back-to-top" title="回到頂部">⬆️</a>
 
     <script>
