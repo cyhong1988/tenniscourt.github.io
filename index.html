@@ -562,20 +562,15 @@
                         const query = url.searchParams.get('query') || url.searchParams.get('q');
                         
                         if (query) {
-                            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
                             const isAndroid = /Android/.test(navigator.userAgent);
                             
-                            if (isIOS) {
-                                // 阻擋預設開啟網頁行為，強制呼叫 iOS 的 Google Maps 深層連結
-                                e.preventDefault();
-                                window.location.href = 'comgooglemaps://?q=' + query;
-                                // 若沒安裝 App 則在 1 秒後導向網頁版
-                                setTimeout(() => { window.location.href = link.href; }, 1000);
-                            } else if (isAndroid) {
-                                // Android 使用 Intent 強制喚醒
+                            if (isAndroid) {
+                                // 僅保留 Android 使用 Intent 強制喚醒
                                 e.preventDefault();
                                 window.location.href = 'intent://maps.google.com/maps?q=' + query + '#Intent;scheme=https;package=com.google.android.apps.maps;end';
                             }
+                            // iOS 端完全不攔截，讓系統原生的 Universal Links 發揮作用
+                            // 系統會自動辨識 https 連結並直接在背景切換至 Google Maps App
                         }
                     });
                 }
