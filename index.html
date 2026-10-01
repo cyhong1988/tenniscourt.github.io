@@ -271,7 +271,6 @@
         </div>
         
         <div class="main-tabs">
-            <!-- 加入 id 讓 JavaScript 方便點擊 -->
             <button id="btn-melbourne" class="tab-btn active" onclick="switchTab('melbourne-tab', '🇦🇺 墨爾本自由行行程表', '8/29 - 9/5 ｜ 即時天氣與日出日落同步預報 ⛅', this)">🇦🇺 墨爾本</button>
             <button id="btn-shanghai" class="tab-btn" onclick="switchTab('shanghai-tab', '🇨🇳 上海三天兩夜自由行', '10/8 - 10/10 ｜ 大師賽 × 朱家角 × 老宅午餐 ⛅', this)">🇨🇳 上海</button>
         </div>
@@ -465,11 +464,13 @@
             <section id="sh_day2" class="day-card" data-date="2026-10-09" data-loc-index="5">
                 <h2>📅 10/9 (五) 完整上海大師賽</h2>
                 <ul class="timeline">
-                    <li data-time="09:30"><span class="time">09:30</span>上海早點</li>
-                    <li data-time="10:30"><span class="time">10:30</span>出發前往球場（或視情況逛一下街，晚點再去）</li>
+                    <li data-time="08:30"><span class="time">08:30</span>前往 光明邨大酒家 排隊買鮮肉月餅當早餐 <a href="https://www.google.com/maps/search/?api=1&query=光明邨大酒家+淮海中路+上海" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a>
+                        <div class="suggestion"><strong>💡 必買神物：</strong>鮮肉月餅（外帶窗口排隊，建議多買幾顆帶去球場當點心）。</div>
+                    </li>
+                    <li data-time="10:30"><span class="time">10:30</span>出發前往球場（或視排隊情況調整時間）</li>
                     <li data-time="11:45"><span class="time">11:45</span>抵達旗忠網球中心 <a href="https://www.google.com/maps/search/?api=1&query=旗忠網球中心" target="_blank" class="action-link"><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" alt="Map">地圖</a></li>
                     <li data-time="12:00"><span class="time">12:00</span>日場賽事
-                        <div class="suggestion"><strong>🍽️ 午餐：</strong>球場內用餐</div>
+                        <div class="suggestion"><strong>🍽️ 午餐：</strong>球場內用餐（或享用早上買的鮮肉月餅）</div>
                     </li>
                     <li data-time="18:00"><span class="time">18:00</span>夜場賽事</li>
                     <li><span class="time">晚上</span>球場 → 飯店</li>
@@ -592,7 +593,7 @@
             if (code >= 71 && code <= 77) return '❄️'; 
             if (code >= 80 && code <= 82) return '🌦️'; 
             if (code >= 95 && code <= 99) return '⛈'; 
-            return '☁️';
+            return '☁️️';
         }
 
         async function fetchWeatherForDates(startDate, endDate) {
@@ -669,8 +670,6 @@
             if (savedTab === 'shanghai-tab') {
                 document.getElementById('btn-shanghai').click();
             } else if (savedTab === 'melbourne-tab') {
-                // 如果有記錄是墨爾本，確保它被點擊以防萬一
-                // (雖然預設已是墨爾本，但加上這行確保標題那些會跑過一遍邏輯)
                 document.getElementById('btn-melbourne').click();
             }
             
